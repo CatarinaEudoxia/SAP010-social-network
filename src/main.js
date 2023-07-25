@@ -1,6 +1,6 @@
 // Este es el punto de entrada de tu aplicacion
-
-import { myFunction } from './lib/index.js';
+import dom  from "./lib/index.js";
+/*import { myFunction } from './lib/index.js';
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -21,3 +21,4 @@ const app = initializeApp(firebaseConfig);
 
 
 myFunction();
+dom ()*/

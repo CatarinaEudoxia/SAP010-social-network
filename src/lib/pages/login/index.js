@@ -1,7 +1,8 @@
 export default () => {
     const containerLogin = document.createElement("div");
+    containerLogin.classList.add("containerLogin");
 
-    const templateLogin = `
+    containerLogin.innerHTML = `
         <header></header>
     
         <div class="container">
@@ -10,7 +11,7 @@ export default () => {
 
                 <input type="password" id="senha" name="senha" placeholder="Senha" required> 
 
-                <a href="#" id="esqueceu-senha">Esqqueci minha senha</a>
+                <a href="#login" id="esqueceu-senha">Esqueci minha senha</a>
 
                 <button type="submit" id="btn-entrar">Entrar</button>
             </form>
@@ -18,9 +19,7 @@ export default () => {
             <button id="btn-google">Entrar com o Google</button>    
         </div>
 
-    `;
-    
-    containerLogin.innerHTML = templateLogin;
+    `
 
     return containerLogin;
 }

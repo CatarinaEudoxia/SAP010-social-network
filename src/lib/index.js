@@ -1,14 +1,25 @@
-import home from "./home/index.js";
-import login from "./login/index.js";
-import cadastro from "./cadastro/index.js";
+import home from "./pages/home/index.js";
+import login from "./pages/login/index.js";
+import cadastro from "./pages/cadastro/index.js";
 // aqui exportaras las funciones que necesites
 
-export const myFunction = () => {
-  // aqui tu codigo
-  console.log('Hola mundo!');
+const main = document.querySelector("#root")
+
+const init = () => {
+  main.innerHTML = ""; // Limpar o conteúdo do elemento principal
+  main.appendChild(login()); // Carregar a página de login
 };
 
+window.addEventListener("load", () => {
+  init();
+});
 
-window.addEventListener("load,")
+/*export default dom = () => {
 
-window.addEventListener("hashchange")
+window.addEventListener("load", () => {
+  main.appendChild(login());
+  init();
+});
+}
+
+window.addEventListener("hashchange")*/
