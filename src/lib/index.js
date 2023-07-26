@@ -1,25 +1,23 @@
-import home from "./pages/home/index.js";
-import login from "./pages/login/index.js";
-import cadastro from "./pages/cadastro/index.js";
-// aqui exportaras las funciones que necesites
+// Este es el punto de entrada de tu aplicacion
 
-const main = document.querySelector("#root")
+/*import { myFunction } from './lib/index.js';
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-const init = () => {
-  main.innerHTML = ""; // Limpar o conteúdo do elemento principal
-  main.appendChild(login()); // Carregar a página de login
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCQWC6WeCZe1egaAyDnI7EhcuUkYWmBclA",
+  authDomain: "wlamel-book-s.firebaseapp.com",
+  projectId: "wlamel-book-s",
+  storageBucket: "wlamel-book-s.appspot.com",
+  messagingSenderId: "608921320613",
+  appId: "1:608921320613:web:bfada4de699f662bcca14c"
 };
 
-window.addEventListener("load", () => {
-  init();
-});
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
-/*export default dom = () => {
 
-window.addEventListener("load", () => {
-  main.appendChild(login());
-  init();
-});
-}
-
-window.addEventListener("hashchange")*/
+myFunction();

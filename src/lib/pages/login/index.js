@@ -5,13 +5,13 @@ export default () => {
     containerLogin.innerHTML = `
         <header></header>
     
-        <div class="container">
+        <div class="content">
             <form id="login-form">
                 <input type="email" id="email" name="email" placeholder="E-mail" required>
 
                 <input type="password" id="senha" name="senha" placeholder="Senha" required> 
 
-                <a href="#login" id="esqueceu-senha">Esqueci minha senha</a>
+                <a href="" id="esqueceu-senha">Esqueci minha senha</a>
 
                 <button type="submit" id="btn-entrar">Entrar</button>
             </form>
@@ -20,7 +20,8 @@ export default () => {
         </div>
 
     `
-
+const banana = containerLogin.querySelector("#email");
+console.log(banana);
     return containerLogin;
 }
 
