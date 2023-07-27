@@ -8,7 +8,7 @@ const main = document.querySelector("#root")
 
 const init = () => {
   main.innerHTML = ""; // Limpar o conteúdo do elemento principal
-  main.appendChild(login()); // Carregar a página de login
+  main.appendChild(home()); // Carregar a página de login
 };
 
 window.addEventListener("load", () => {
