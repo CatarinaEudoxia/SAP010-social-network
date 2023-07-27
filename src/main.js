@@ -1,7 +1,7 @@
 
-import home from "./lib/pages/home/index.js";
-import login from "./lib/pages/login/index.js";
-import cadastro from "./lib/pages/cadastro/index.js";
+import home from "./pages/home/index.js";
+import login from "./pages/login/index.js";
+import cadastro from "./pages/cadastro/index.js";
 // aqui exportaras las funciones que necesites
 
 const main = document.querySelector("#root")
@@ -15,10 +15,4 @@ window.addEventListener("load", () => {
   init();
 });
 
-/*export default dom = () => {
 
-window.addEventListener("load", () => {
-  main.appendChild(login());
-  init();
-});
-}*/
