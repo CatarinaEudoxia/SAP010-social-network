@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    font-family: "Alegreya SC";
+    font-size: 15px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;   
+    align-items: center;
+    background-image: url(/pages/assets/background.png); 
+    background-size: cover;
+    background-repeat: repeat;
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    width: 200px;
+}
+
+#btn-entrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(218, 168, 141, 1);
+    color: black;
+    border: 2px solid rgba(62, 52, 42, 1);
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    cursor: pointer;
+}
+
+#btn-register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(218, 168, 141, 1);
+    color: black;
+    border: 2px solid rgba(62, 52, 42, 1);
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    cursor: pointer;
+}

@@ -15,9 +15,16 @@ export default () => {
       <section class="container-home" id="home">
         <button onclick="enterHome()" id="btn-entrar">Entrar</button>
         <button id="btn-register">Cadastre-se</button> 
+        
       </section>
     </div>
     <footer><strong>Desenvolvido por Catarina E. Ferreira e Cibelli Monte, alunas da turma SAP010 Laboratória</strong></footer>
     `
-    return containerHome;
+const designHome = document.createElement("link");
+designHome.rel = "stylesheet";
+designHome.href = "pages/home/style.css";
+
+document.head.appendChild(designHome);
+
+return containerHome;
 }
