@@ -21,7 +21,7 @@ export default () => {
             <button id="btn-google">Entrar com o Google</button>    
         </div>
 
-    `
+    `;
 
 const designLogin = document.createElement("link");
 designLogin.rel = "stylesheet";
