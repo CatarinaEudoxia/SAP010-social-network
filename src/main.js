@@ -6,13 +6,19 @@ import register from "./pages/cadastro/index.js";
 
 const main = document.querySelector("#root")
 
-const init = () => {
+/*const init = () => {
   main.innerHTML = ""; // Limpar o conteúdo do elemento principal
-  main.appendChild(home()); // Carregar a página de login
+  main.appendChild(login()); // Carregar a página de login
 };
 
 window.addEventListener("load", () => {
   init();
-});
+});*/
 
+const init = () => {
+  window.addEventListener("hashchange", ()=> {
+    main.innerHTML = "";
+    
+  })
+}
 

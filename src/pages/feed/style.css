@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    font-family: "Alegreya SC";
+    font-size: 15px;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    width: 200px;
+}
+

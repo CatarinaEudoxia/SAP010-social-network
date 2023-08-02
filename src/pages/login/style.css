@@ -40,6 +40,7 @@ input {
     border-radius: 20px;
     padding: 10px;
     margin-top: 20px;
+    margin-bottom: 20px;
     width: 300px;
     
 }
@@ -52,9 +53,6 @@ a {
     margin-bottom: 20px;
 }
 
-
-
-
 #btn-entrar {
     display: flex;
     justify-content: center;
@@ -64,7 +62,6 @@ a {
     border: 2px solid rgba(62, 52, 42, 1);
     border-radius: 20px;
     padding: 10px;
-    margin: 10px;
     width: 300px;
     cursor: pointer;
     margin: 0 auto;
@@ -80,9 +77,15 @@ a {
     border-radius: 20px;
     padding: 10px;
     margin: 10px;
+    margin-top:20px;
     width: 300px;
     cursor: pointer;
 }
-
+ 
+#forget-password{
+    background-color: transparent;
+    border: none;   
+    cursor: pointer;
+}
     
-   
+
