@@ -21,11 +21,13 @@ export default () => {
   </div>
   
   `
-
   function openModal() {
     return `
-    <dialog>
+    <div onclick="abrirModal()" class="btn-us">Sobre Nós</div>
+    <div class="janela-modal" id="janela-modal">
+        <div class="modal">    
 
+      <h1>WLAMEL BOOK'S</h1>  
       <p> Aqui você poderá compartilhar suas percepções, observações e curiosidades dos seus livros, e incentivar a leitura para outros num espaço virtual seguro. </p>
       <br>
       <img src="pages/assets/booksIcon.png" alt="Icon de livros">
@@ -36,9 +38,8 @@ export default () => {
       e&nbsp
       </p>
       
-      <button id="btn-back"></button>
+      <button class="bnt-back" id="btn-back">X</button>
       
-   </dialog>  
     `
   }
 
@@ -48,16 +49,16 @@ export default () => {
 
   document.head.appendChild(designHome);
 
-  const buttonUs = document.querySelector("#btn-us");
-  const modal = document.querySelector("dialog");
-  const closeModal = document.querySelector("#btn-back");
+ 
+  function abrirModal() {
+    const modal = document.getElementById("janela-modal");
+    modal.classList.add('abrir')
 
-  buttonUs.onclick = function () {
-    modal.showModal(openModal())
-  }
-
-  closeModal.onclick = function () {
-    modal.close(openModal())
+    modal.addEventListener('click', (e) => {
+      if(e.target.id =='btn-back' || e.target.id == 'janela-modal' ){
+        modal.classList.remove('abrir')
+      }
+    })
   }
 
   return containerHome;

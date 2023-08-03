@@ -51,3 +51,56 @@ img {
     width: 300px;
     cursor: pointer;
 }
+
+.janela-modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(218, 168, 141, 1);
+    color: black;
+    border: 2px solid rgba(62, 52, 42, 1);
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.btn-us{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(218, 168, 141, 1);
+    color: black;
+    border: 2px solid rgba(62, 52, 42, 1);
+    border-radius: 20px;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    cursor: pointer;
+
+}
+
+.modal{
+    width: 60%;
+    min-width: 450px;
+    min-height: 200px;
+    background-color: rgba(255, 255, 255, 0.681);
+    backdrop-filter: blur(10%);
+    padding: 50%;
+    border-radius: 20px;
+
+}
+
+.fechar{
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
