@@ -1,28 +1,9 @@
 export default () => {
-  const containerHome = document.createElement("div");
-  containerHome.classList.add("container");
-
-  /*function enterHome () {
-    window.location.href = "index.html#login";
-  }*/
-
-  containerHome.innerHTML = `
-  <header>
-  <img src="pages/assets/logotipo.png" alt="Logotipo da rede social Wlamel Books">
-  </header>
-
-  <div class="container-home"> 
-    <section class="container-home" id="home">
-      <button onclick="enterHome()" id="btn-entrar">Entrar</button>
-      <button id="btn-register">Cadastre-se</button> 
-      <button id="btn-us">Sobre Nós</button>
-
-    </section>
-  </div>
-  
-  `
   function openModal() {
-    return `
+    const aboutUs = document.createElement("div");
+    aboutUs.classList.add("modal-window");
+
+    aboutUs.innerHTML =  `
     <div onclick="abrirModal()" class="btn-us">Sobre Nós</div>
     <div class="janela-modal" id="janela-modal">
         <div class="modal">    
@@ -41,25 +22,42 @@ export default () => {
       <button class="bnt-back" id="btn-back">X</button>
       
     `
+    const btnBack = aboutUs.querySelector("#btn-back");
+    btnBack.addEventListener("click", "" => {
+      aboutUs.style.display = "none";
+    })
+    return aboutUs
   }
 
   const designHome = document.createElement("link");
   designHome.rel = "stylesheet";
   designHome.href = "pages/home/style.css";
-
   document.head.appendChild(designHome);
 
- 
-  function abrirModal() {
-    const modal = document.getElementById("janela-modal");
-    modal.classList.add('abrir')
 
-    modal.addEventListener('click', (e) => {
-      if(e.target.id =='btn-back' || e.target.id == 'janela-modal' ){
-        modal.classList.remove('abrir')
-      }
-    })
-  }
+  const containerHome = document.createElement("div");
+  containerHome.classList.add("container");
+
+    containerHome.innerHTML = `
+  <header>
+  <img src="pages/assets/logotipo.png" alt="Logotipo da rede social Wlamel Books">
+  </header>
+
+  <div class="container-home"> 
+    <section class="container-home" id="home">
+      <button onclick="enterHome()" id="btn-entrar">Entrar</button>
+      <button id="btn-register">Cadastre-se</button> 
+      <button id="btn-us">Sobre Nós</button>
+
+    </section>
+  </div>
+  
+  `
+  const btnBack = aboutUs.querySelector("#btn-us");
+  btnBack.addEventListener("click", "" => {
+    aboutUs.style.display = "none";
+  })
+  
 
   return containerHome;
 }

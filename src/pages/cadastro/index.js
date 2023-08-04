@@ -1,3 +1,6 @@
+import { bananinha } from "../../lib";
+
+
 export default () => {
     const containerRegister = document.createElement("div");
     containerRegister.classList.add("container");
@@ -23,7 +26,7 @@ export default () => {
 
     `
 
-    function validarFormulario() {
+    /*function validarFormulario() {
         const userPassword = document.querySelector("#senha").value;
         const confirmPassword = document.querySelector("#confirm-password").value;
 
@@ -34,7 +37,7 @@ export default () => {
 
         return true;
 
-    }
+    }*/
 
     const designLogin = document.createElement("link");
     designLogin.rel = "stylesheet";
@@ -42,6 +45,9 @@ export default () => {
 
     document.head.appendChild(designLogin);
 
+    const batata = containerRegister.querySelector("#criar-conta")
+    batata.addEventListener("click", bananinha);
+    
     return containerRegister;
 }
 
