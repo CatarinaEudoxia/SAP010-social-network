@@ -4,26 +4,28 @@ export default () => {
     aboutUs.classList.add("modal-window");
 
     aboutUs.innerHTML =  `
-    <div onclick="abrirModal()" class="btn-us">Sobre Nós</div>
     <div class="janela-modal" id="janela-modal">
         <div class="modal">    
 
-      <h1>WLAMEL BOOK'S</h1>  
-      <p> Aqui você poderá compartilhar suas percepções, observações e curiosidades dos seus livros, e incentivar a leitura para outros num espaço virtual seguro. </p>
-      <br>
-      <img src="pages/assets/booksIcon.png" alt="Icon de livros">
-      <p>Desenvolvido por&nbsp;
-      <a href="https://github.com/CatarinaEudoxia"> Catarina E. Ferreira&nbsp</a>
-      e&nbsp
-      <a href="https://github.com/Cibellimonte"> Cibelli M. do Monte&nbsp</a>
-      e&nbsp
-      </p>
-      
-      <button class="bnt-back" id="btn-back">X</button>
-      
+        <h1>WLAMEL BOOK'S</h1>  
+        <p> Aqui você poderá compartilhar suas percepções, observações e curiosidades dos seus livros, e incentivar a leitura para outras pessoas num espaço virtual seguro. </p>
+        <br>
+        <img src="pages/assets/booksIcon.png" id="img-book" alt="Icon de livros">
+        <br>
+        <p>Desenvolvido por&nbsp;
+        <a href="https://github.com/CatarinaEudoxia"> Catarina E. Ferreira&nbsp</a>
+        e&nbsp
+        <a href="https://github.com/Cibellimonte"> Cibelli M. do Monte&nbsp</a>
+        &nbsp
+        </p>
+        
+        <button class="bnt-back" id="btn-back">X</button>
+       </div>
+    </div>   
+
     `
     const btnBack = aboutUs.querySelector("#btn-back");
-    btnBack.addEventListener("click", "" => {
+    btnBack.addEventListener("click", () => {
       aboutUs.style.display = "none";
     })
     return aboutUs
@@ -53,9 +55,11 @@ export default () => {
   </div>
   
   `
-  const btnBack = aboutUs.querySelector("#btn-us");
-  btnBack.addEventListener("click", "" => {
-    aboutUs.style.display = "none";
+  const btnUs = containerHome.querySelector("#btn-us");
+  btnUs.addEventListener("click", () => {
+    const modal = openModal(); 
+    containerHome.appendChild(modal);
+    modal.style.display = "flex";
   })
   
 
