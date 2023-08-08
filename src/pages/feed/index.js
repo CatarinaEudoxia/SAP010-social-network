@@ -12,7 +12,6 @@ export default () => {
     modal.classList.add("modal-window");
 
     modal.innerHTML = `    
-      <div id="modal" class="modal">
         <div class="modal-content">
           <select id="genre" name="genre">
             <option value="fantasy">Fantasia</option>
@@ -50,8 +49,7 @@ export default () => {
           <button id="btn-publish">Publicar</button>
           <button id="btn-close">X</button>
 
-        </div>
-      </div>   
+        </div>  
    `;
 
     const btnClose = modal.querySelector("#btn-close");

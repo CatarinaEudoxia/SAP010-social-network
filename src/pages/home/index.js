@@ -47,7 +47,7 @@ export default () => {
 
   <div class="container-home"> 
     <section class="container-home" id="home">
-      <button onclick="enterHome()" id="btn-entrar">Entrar</button>
+      <button id="btn-entrar">Entrar</button>
       <button id="btn-register">Cadastre-se</button> 
       <button id="btn-us">Sobre Nós</button>
 
@@ -62,6 +62,15 @@ export default () => {
     modal.style.display = "flex";
   })
   
+const btnEnter = containerHome.querySelector("#btn-entrar");
+btnEnter.addEventListener("click", () => {
+  window.location.hash = "#login";
+})
+
+const btnRegister = containerHome.querySelector("#btn-register");
+btnRegister.addEventListener("click", () => {
+  window.location.hash = "#register";
+})
 
   return containerHome;
 }

@@ -10,7 +10,6 @@ export default () => {
       modal.classList.add("modal-window");
   
       modal.innerHTML = `    
-        <div id="modal" class="modal">
           <div class="modal-content">
             <h1>Esqueci Minha Senha</h1>
             <form id="request-form">
@@ -19,7 +18,6 @@ export default () => {
               <button type="submit" id="btn-enter">Enviar e-mail de recuperação</button>
             </form>
           </div>
-        </div>
       `;
   
       const btnClose = modal.querySelector("#btn-close");
