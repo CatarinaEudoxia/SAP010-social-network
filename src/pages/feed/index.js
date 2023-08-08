@@ -6,7 +6,6 @@ export default () => {
     designFeed.href = "pages/feed/style.css";
     document.head.appendChild(designFeed);
   
-
      // Função para criar o modal
     function createModal() {
     const modal = document.createElement("div");
@@ -15,12 +14,45 @@ export default () => {
     modal.innerHTML = `    
       <div id="modal" class="modal">
         <div class="modal-content">
-         <select><select>
-         <select><select>
-         <textarea></textearea>
-         <button id"publish">Publicar</button>
-         <button id"btn-close">X</button>
-    `;
+          <select id="genre" name="genre">
+            <option value="fantasy">Fantasia</option>
+            <option value="sci-fi">Ficção Científica</option>
+            <option value="romance">Romance</option>
+            <option value="mystery">Mistério</option>
+            <option value="thriller">Suspense</option>
+            <option value="horror">Terror</option>
+            <option value="adventure">Aventura</option>
+            <option value="historical">Histórico</option>
+            <option value="non-fiction">Não Ficção</option>
+            <option value="self-help">Autoajuda</option>
+            <option value="biography">Biografia</option>
+            <option value="comic">História em Quadrinhos</option>
+            <option value="drama">Drama</option>
+            <option value="poetry">Poesia</option>
+            <option value="children">Literatura Infantil</option>
+            <option value="classic">Clássico</option>
+            <option value="sci-fi-fantasy">Ficção Científica e Fantasia</option>
+            <option value="historical-fiction">Ficção Histórica</option>
+            <option value="philosophy">Filosofia</option>
+         </select>
+
+         <select id="age" name="age">
+            <option value="livre">Livre</option>
+            <option value="maior-10">Maior de 10 anos</option>
+            <option value="maior-12">Maior de 12 anos</option>
+            <option value="maior-14">Maior de 14 anos</option>
+            <option value="maior-16">Maior de 16 anos</option>
+            <option value="maior-18">Maior de 18 anos</option>
+          </select> 
+
+          <textarea id="postContent" name="postContent" rows="4" maxlength="1000"></textarea>
+          <input type="file" id="imageUpload" name="imageUpload" accept="image/*">
+          <button id="btn-publish">Publicar</button>
+          <button id="btn-close">X</button>
+
+        </div>
+      </div>   
+   `;
 
     const btnClose = modal.querySelector("#btn-close");
     btnClose.addEventListener("click", () => {
@@ -29,15 +61,16 @@ export default () => {
 
     return modal;
   }
+
  const containerFeed = document.createElement("div");
     containerFeed.classList.add("container");
   
     containerFeed.innerHTML = `
       <header>
-        <img src="pages/assets/logotipo.png" alt="Logotipo do feed">
+        <img src="pages/assets/logotipo2.png" alt="Logotipo do feed">
       </header>
       <div id="welcome-user>
-        <p>Seja Bem-Vindo(a) ${nome}!</p>
+        <p>Seja Bem-Vindo(a) !</p>
       </div>
 
       <div id="your-content">

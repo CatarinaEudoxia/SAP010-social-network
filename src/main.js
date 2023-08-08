@@ -3,13 +3,14 @@
 import login from "./pages/login/index.js";
 import register from "./pages/cadastro/index.js";
 import home from "./pages/home/index.js";
+import feed from "./pages/feed/index.js";
 // aqui exportaras las funciones que necesites
 
 const main = document.querySelector("#root")
 
 const init = () => {
   main.innerHTML = ""; // Limpar o conteúdo do elemento principal
-  main.appendChild(home()); // Carregar a página de login
+  main.appendChild(feed()); // Carregar a página de login
 };
 
 window.addEventListener("load", () => {
