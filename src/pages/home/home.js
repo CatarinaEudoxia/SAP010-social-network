@@ -33,7 +33,7 @@ export default () => {
 
   const designHome = document.createElement("link");
   designHome.rel = "stylesheet";
-  designHome.href = "pages/home/style.css";
+  designHome.href = "pages/home/home.css";
   document.head.appendChild(designHome);
 
 

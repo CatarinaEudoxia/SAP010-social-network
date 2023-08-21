@@ -1,7 +1,7 @@
 export default () => {
   const designLogin = document.createElement("link");
   designLogin.rel = "stylesheet";
-  designLogin.href = "pages/login/style.css";
+  designLogin.href = "pages/login/login.css";
   document.head.appendChild(designLogin);
 
   // Função para criar o modal

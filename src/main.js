@@ -1,9 +1,9 @@
 
 //import home from "./pages/home/index.js";
-import login from "./pages/login/index.js";
-import register from "./pages/cadastro/index.js";
-import home from "./pages/home/index.js";
-import feed from "./pages/feed/index.js";
+import login from "./pages/login/login.js";
+import register from "./pages/cadastro/register.js";
+import home from "./pages/home/home.js";
+import feed from "./pages/feed/feed.js";
 // aqui exportaras las funciones que necesites
 
 const main = document.querySelector("#root")

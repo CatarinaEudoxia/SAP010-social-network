@@ -2,7 +2,7 @@ export default () => {
   // Criar o elemento <link> para importar o CSS
   const designFeed = document.createElement("link");
   designFeed.rel = "stylesheet";
-  designFeed.href = "pages/feed/style.css";
+  designFeed.href = "pages/feed/feed.css";
   document.head.appendChild(designFeed);
 
    // Função para criar o modal

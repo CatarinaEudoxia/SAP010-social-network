@@ -20,10 +20,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-const email = " "
-const password = " "
 
-export function bananinha() {
+export function register(email, password) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in 
@@ -37,5 +35,19 @@ export function bananinha() {
       // ..
       console.log("deu errado")
     });
+};
 
-}
+export function loginOn(email, password) {
+  signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+};
+
+

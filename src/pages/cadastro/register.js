@@ -3,7 +3,7 @@ import { bananinha } from "../../lib";
 export default () => {
     const designLogin = document.createElement("link");
     designLogin.rel = "stylesheet";
-    designLogin.href = "pages/cadastro/style.css";
+    designLogin.href = "pages/cadastro/register.css";
     document.head.appendChild(designLogin);
 
     const containerRegister = document.createElement("div");
