@@ -44,7 +44,7 @@ export default () => {
           <option value="maior-18">Maior de 18 anos</option>
         </select> 
 
-        <textarea id="postContent" name="postContent" placeholder="Que Leitura você gostaria de compartilhar..."  disabled></textarea>
+        <textarea id="postContent" name="postContent" placeholder="Que Leitura você gostaria de compartilhar..."></textarea>
         <input type="file" id="imageUpload" name="imageUpload" accept="image/*">
         <button id="btn-publish">Publicar</button>
         <button id="btn-close">X</button>

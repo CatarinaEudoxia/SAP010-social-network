@@ -8,7 +8,6 @@
     display: flex;
     flex-direction: column;   
     align-items: center;
-    background-image: url(/pages/assets/background.png); 
     background-size: cover;
     background-repeat: repeat;
     width: 100%;

@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -21,23 +21,22 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 
-export function register(email, password) {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      console.log("deu certo")
-      // ...
+export const registerAccount = (email, password) => {
+createUserWithEmailAndPassword(auth, email, password)
+    .then((resolve) => {
+      //const user = userCredential.user;
+      alert("Cadastro realizado com sucesso!")
+      console.log("deu certo", resolve)
     })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
-      console.log("deu errado")
+    .catch((error) => { 
+     // const errorCode = error.code;
+     // const errorMessage = error.message;
+      alert("Falha ao cadastrar usuário!")
+      console.log("deu errado", error)
     });
 };
 
-export function loginOn(email, password) {
+export const loginOn = (email, password) => {
   signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 

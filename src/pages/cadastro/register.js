@@ -1,4 +1,4 @@
-import { bananinha } from "../../lib";
+import { registerAccount } from "../../lib";
 
 export default () => {
     const designLogin = document.createElement("link");
@@ -15,12 +15,12 @@ export default () => {
         </header>
     
         <div class="content">
-            <form id="register-form" onsubmit="return validarFormulario()" method="post">
+            <form id="register-form" method="post">
                 <input type="text" id="your-name" name="name" placeholder="Nome Completo" required>
 
                 <input type="email" id="email" name="email" placeholder="E-mail" required>
 
-                <input type="password" id="senha" name="senha" placeholder="Senha" required>
+                <input type="password" id="password" name="password" placeholder="Senha" required>
                 
                 <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmar senha" required> 
 
@@ -30,7 +30,7 @@ export default () => {
 
     `
 
-    /*function validarFormulario() {
+   /* function validarFormulario() {
         const userPassword = document.querySelector("#senha").value;
         const confirmPassword = document.querySelector("#confirm-password").value;
 
@@ -38,13 +38,12 @@ export default () => {
             alert('As senhas não correspondem. Por favor, tente novamente.');
             return false;
         }
-
         return true;
 
-    }*/
+    };*/
 
     const batata = containerRegister.querySelector("#criar-conta")
-    batata.addEventListener("click", bananinha);
+    batata.addEventListener("click", registerAccount);
     
     return containerRegister;
 }
