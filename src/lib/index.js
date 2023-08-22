@@ -23,10 +23,10 @@ const db = getFirestore(app);
 
 export const registerAccount = (email, password) => {
 createUserWithEmailAndPassword(auth, email, password)
-    .then((resolve) => {
+    .then((userCredential) => {
       //const user = userCredential.user;
       alert("Cadastro realizado com sucesso!")
-      console.log("deu certo", resolve)
+      console.log("deu certo", userCredential)
     })
     .catch((error) => { 
      // const errorCode = error.code;
@@ -39,13 +39,16 @@ createUserWithEmailAndPassword(auth, email, password)
 export const loginOn = (email, password) => {
   signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-    // ...
+    //const user = userCredential.user;
+    alert("Login realizado com sucesso!")
+    console.log("deu certo", userCredential)
+    window.location.hash = "#feed";
   })
   .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
+   // const errorCode = error.code;
+     // const errorMessage = error.message;
+     alert("Falha ao logar usuário!")
+     console.log("deu errado", error)
   });
 };
 

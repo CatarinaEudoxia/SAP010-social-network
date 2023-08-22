@@ -30,8 +30,8 @@ export default () => {
 
     `
 
-   /* function validarFormulario() {
-        const userPassword = document.querySelector("#senha").value;
+    function validarFormulario() {
+        const userPassword = document.querySelector("#password").value;
         const confirmPassword = document.querySelector("#confirm-password").value;
 
         if (userPassword !== confirmPassword) {
@@ -40,10 +40,17 @@ export default () => {
         }
         return true;
 
-    };*/
-
-    const batata = containerRegister.querySelector("#criar-conta")
-    batata.addEventListener("click", registerAccount);
+    };
+    
+    const registerForm = containerRegister.querySelector("#register-form");
+    registerForm.addEventListener("submit", (event) => {
+     event.preventDefault(); // Evita o envio padrão do formulário
+     const emailInput = registerForm.querySelector("#email");
+     const passwordInput = registerForm.querySelector("#password");
+     const email = emailInput.value;
+     const password = passwordInput.value;
+    registerAccount(email, password); // Chama a função de registro de conta
+    });
     
     return containerRegister;
 }

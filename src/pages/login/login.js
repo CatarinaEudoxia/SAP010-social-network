@@ -1,3 +1,5 @@
+import { loginOn } from "../../lib";
+
 export default () => {
   const designLogin = document.createElement("link");
   designLogin.rel = "stylesheet";
@@ -67,14 +69,18 @@ export default () => {
       modal.style.display = "flex"; // Torna o modal visível ao clicar no botão "Esqueci minha senha"
     });
   
-    const banana = containerLogin.querySelector("#email");
-    console.log(banana);
+    const loginAccount = containerLogin.querySelector("#login-form");
+    loginAccount.addEventListener("submit", (event) => {
+     event.preventDefault(); // Evita o envio padrão do formulário
+     const emailInput = loginAccount.querySelector("#email");
+     const passwordInput = loginAccount.querySelector("#password");
+     const email = emailInput.value;
+     const password = passwordInput.value;
+
+    loginOn(email, password); // Chama a função de registro de conta
+    });
   
     return containerLogin;
   };
 
-  /*const btnEntrar = containerLogin.querySelector("#btn-google");
-  btnEntrar.addEventListener("click", () => {
-    window.location.hash = "#abacaxi";
-    console.log(window.location)
-  })*/  
+ 
