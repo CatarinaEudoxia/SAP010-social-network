@@ -31,10 +31,10 @@ export default () => {
     `
 
     function validarFormulario() {
-        const userPassword = document.querySelector("#password").value;
+        const passwordInput = document.querySelector("#password").value;
         const confirmPassword = document.querySelector("#confirm-password").value;
 
-        if (userPassword !== confirmPassword) {
+        if (passwordInput !== confirmPassword) {
             alert('As senhas não correspondem. Por favor, tente novamente.');
             return false;
         }
@@ -43,14 +43,18 @@ export default () => {
     };
     
     const registerForm = containerRegister.querySelector("#register-form");
+
     registerForm.addEventListener("submit", (event) => {
      event.preventDefault(); // Evita o envio padrão do formulário
      const emailInput = registerForm.querySelector("#email");
      const passwordInput = registerForm.querySelector("#password");
      const email = emailInput.value;
      const password = passwordInput.value;
-    registerAccount(email, password); // Chama a função de registro de conta
-    });
+
+  if (validarFormulario()) {
+        registerAccount(email, password); // Chama a função de registro de conta
+    }
+});
     
     return containerRegister;
 }
