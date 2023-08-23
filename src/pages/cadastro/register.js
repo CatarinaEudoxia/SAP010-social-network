@@ -30,6 +30,10 @@ export default () => {
         </div>
 
     `
+    containerRegister.querySelector("#return-Home").addEventListener("click", function () {
+        window.history.back();
+    });
+
     const registerForm = containerRegister.querySelector("#register-form");
     function validarFormulario() {
         const passwordInput = document.querySelector("#password").value;
@@ -42,21 +46,21 @@ export default () => {
         return true;
 
     };
-    
-    
+
+
 
     registerForm.addEventListener("submit", (event) => {
-     event.preventDefault(); // Evita o envio padrão do formulário
-     const emailInput = registerForm.querySelector("#email");
-     const passwordInput = registerForm.querySelector("#password");
-     const email = emailInput.value;
-     const password = passwordInput.value;
+        event.preventDefault(); // Evita o envio padrão do formulário
+        const emailInput = registerForm.querySelector("#email");
+        const passwordInput = registerForm.querySelector("#password");
+        const email = emailInput.value;
+        const password = passwordInput.value;
 
-  if (validarFormulario()) {
-        registerAccount(email, password); // Chama a função de registro de conta
-    }
-});
-    
+        if (validarFormulario()) {
+            registerAccount(email, password); // Chama a função de registro de conta
+        }
+    });
+
     return containerRegister;
 }
 

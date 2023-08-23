@@ -5,26 +5,29 @@
 
 .container {
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
     align-items: center;
     width: 100%;
     height: 100%;
 }
 
-#return-Home{
+#return-Home {
     display: flex;
-    width: 50px; /* Defina o tamanho do botão conforme necessário */
+    width: 50px;
+    /* Defina o tamanho do botão conforme necessário */
     height: 20px;
     background-image: url(/pages/assets/return.png);
-    background-size:contain; /* Ajusta o tamanho da imagem para preencher o botão */
+    background-size: contain;
+    /* Ajusta o tamanho da imagem para preencher o botão */
     background-repeat: no-repeat;
-    background-color: transparent; /* Torna o botão transparente */
+    background-color: transparent;
+    /* Torna o botão transparente */
     border: none;
     cursor: pointer;
     position: absolute;
     top: 20px;
     left: 15px;
-    }
+}
 
 header {
     display: flex;
@@ -40,7 +43,7 @@ img {
     justify-content: center;
     align-content: center;
     flex-direction: column;
-    
+
 }
 
 
@@ -56,7 +59,7 @@ input {
     margin-top: 20px;
     margin-bottom: 20px;
     width: 300px;
-    
+
 }
 
 a {
@@ -80,27 +83,29 @@ a {
     cursor: pointer;
     margin: 0 auto;
 }
- 
-#forget-password{
+
+#forget-password {
     background-color: transparent;
-    border: none;   
+    border: none;
     cursor: pointer;
 }
-    
- /* Estilos para o modal */
- .modal-window {
+
+/* Estilos para o modal */
+.modal-window {
     display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
-    z-index: 9999; /* Ajuste a ordem de sobreposição conforme necessário */
-  }
-  
-  /* Estilos para o conteúdo do modal */
-  .modal-content {
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fundo escuro semi-transparente */
+    z-index: 9999;
+    /* Ajuste a ordem de sobreposição conforme necessário */
+}
+
+/* Estilos para o conteúdo do modal */
+.modal-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -113,25 +118,25 @@ a {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Estilos para o botão "Fechar" do modal */
-  #btn-close {
-    position: absolute; 
-     width: 26px;
+}
+
+/* Estilos para o botão "Fechar" do modal */
+#btn-close {
+    position: absolute;
+    width: 26px;
     height: 25px;
     top: -7px;
     right: -7px;
-    background:  rgba(218, 168, 141, 1);
-    border:2px solid rgba(62, 52, 42, 1) ;
+    background: rgba(218, 168, 141, 1);
+    border: 2px solid rgba(62, 52, 42, 1);
     border-radius: 50%;
     font-size: 15px;
     cursor: pointer;
     font-family: Arial;
     font-weight: bold;
-  }
+}
 
-  #btn-enter {
+#btn-enter {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -142,8 +147,8 @@ a {
     border-radius: 20px;
     padding: 10px;
     margin: 10px;
-    margin-top:20px;
+    margin-top: 20px;
     width: 250px;
     cursor: pointer;
     margin: 0 auto;
-  }
+}

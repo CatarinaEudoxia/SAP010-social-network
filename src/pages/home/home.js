@@ -3,7 +3,7 @@ export default () => {
     const aboutUs = document.createElement("div");
     aboutUs.classList.add("modal-window");
 
-    aboutUs.innerHTML =  `
+    aboutUs.innerHTML = `
     <div class="janela-modal" id="janela-modal">
         <div class="modal">    
 
@@ -13,9 +13,9 @@ export default () => {
         <img src="pages/assets/booksIcon.png" id="img-book" alt="Icon de livros">
         <br>
         <p>Desenvolvido por&nbsp;
-        <a href="https://github.com/CatarinaEudoxia"> Catarina E. Ferreira&nbsp</a>
+        <a href="https://github.com/CatarinaEudoxia"> Catarina E. Ferreira</a>
         e&nbsp
-        <a href="https://github.com/Cibellimonte"> Cibelli M. do Monte&nbsp</a>
+        <a href="https://github.com/Cibellimonte"> Cibelli M. do Monte.</a>
         &nbsp
         </p>
         
@@ -40,7 +40,7 @@ export default () => {
   const containerHome = document.createElement("div");
   containerHome.classList.add("container");
 
-    containerHome.innerHTML = `
+  containerHome.innerHTML = `
   <header>
   <img src="pages/assets/logotipo.png" alt="Logotipo da rede social Wlamel Books">
   </header>
@@ -57,20 +57,20 @@ export default () => {
   `
   const btnUs = containerHome.querySelector("#btn-us");
   btnUs.addEventListener("click", () => {
-    const modal = openModal(); 
+    const modal = openModal();
     containerHome.appendChild(modal);
     modal.style.display = "flex";
   })
-  
-const btnEnter = containerHome.querySelector("#btn-entrar");
-btnEnter.addEventListener("click", () => {
-  window.location.hash = "#login";
-})
 
-const btnRegister = containerHome.querySelector("#btn-register");
-btnRegister.addEventListener("click", () => {
-  window.location.hash = "#register";
-})
+  const btnEnter = containerHome.querySelector("#btn-entrar");
+  btnEnter.addEventListener("click", () => {
+    window.location.hash = "#login";
+  })
+
+  const btnRegister = containerHome.querySelector("#btn-register");
+  btnRegister.addEventListener("click", () => {
+    window.location.hash = "#register";
+  })
 
   return containerHome;
 }

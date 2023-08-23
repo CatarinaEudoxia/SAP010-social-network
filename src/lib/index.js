@@ -22,15 +22,15 @@ const db = getFirestore(app);
 
 
 export const registerAccount = (email, password) => {
-createUserWithEmailAndPassword(auth, email, password)
+  createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       //const user = userCredential.user;
       alert("Cadastro realizado com sucesso!")
       console.log("deu certo", userCredential)
     })
-    .catch((error) => { 
-     // const errorCode = error.code;
-     // const errorMessage = error.message;
+    .catch((error) => {
+      // const errorCode = error.code;
+      // const errorMessage = error.message;
       alert("Falha ao cadastrar usuário!")
       console.log("deu errado", error)
     });
@@ -38,18 +38,26 @@ createUserWithEmailAndPassword(auth, email, password)
 
 export const loginOn = (email, password) => {
   signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    //const user = userCredential.user;
-    alert("Login realizado com sucesso!")
-    console.log("deu certo", userCredential)
-    window.location.hash = "#feed";
-  })
-  .catch((error) => {
-   // const errorCode = error.code;
-     // const errorMessage = error.message;
-     alert("Falha ao logar usuário!")
-     console.log("deu errado", error)
-  });
+    .then((userCredential) => {
+      //const user = userCredential.user;
+      alert("Login realizado com sucesso!")
+      console.log("deu certo", userCredential)
+      window.location.hash = "#feed";
+    })
+    .catch((error) => {
+      // const errorCode = error.code;
+      // const errorMessage = error.message;
+      alert("Falha ao logar usuário!")
+      console.log("deu errado", error)
+    });
 };
 
+export const logoutAccount = () => {
+  auth.signOut().then(() => {
+    window.location.hash = "#home"; // Substitua com a URL apropriada
+  }).catch(error => {
+    // Trate erros de logout, se necessário
+    console.error("Erro ao fazer logout:", error);
+  });
+};
 

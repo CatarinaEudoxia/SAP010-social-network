@@ -6,7 +6,7 @@
 
 .container {
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
     align-items: center;
     width: 100%;
     height: 100%;
@@ -53,7 +53,7 @@ img {
     cursor: pointer;
 }
 
-.fechar{
+.fechar {
     position: absolute;
     top: -5px;
     right: -5px;
@@ -65,18 +65,18 @@ img {
     cursor: pointer;
 }
 
-.modal-window{
+.modal-window {
     display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 9999;
 }
 
-.modal{
+.modal {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -90,8 +90,8 @@ img {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0,0,0, 0.3);
-    
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+
 }
 
 #btn-us {
@@ -111,8 +111,8 @@ img {
     height: 25px;
     top: -7px;
     right: -7px;
-    background:  rgba(218, 168, 141, 1);
-    border:2px solid rgba(62, 52, 42, 1) ;
+    background: rgba(218, 168, 141, 1);
+    border: 2px solid rgba(62, 52, 42, 1);
     border-radius: 50%;
     font-size: 15px;
     cursor: pointer;
@@ -129,10 +129,11 @@ h1 {
     width: 100px;
 }
 
-p{
+p {
     text-align: justify;
     font-size: medium;
 }
+
 a {
     text-decoration: none;
     color: black;

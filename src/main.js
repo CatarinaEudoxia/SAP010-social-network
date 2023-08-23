@@ -20,27 +20,27 @@ window.addEventListener("load", () => {
 });
 
 const init = () => {
-  window.addEventListener("hashchange", ()=> {
+  window.addEventListener("hashchange", () => {
     main.innerHTML = "";
     const hash = window.location.hash;
     switch (hash) {
-    case "#home": 
-    main.appendChild(home())
-    break; 
-    case "#login": 
-    main.appendChild(login())
-    break;
+      case "#home":
+        main.appendChild(home())
+        break;
+      case "#login":
+        main.appendChild(login())
+        break;
 
-    case "#register": 
-    main.appendChild(register())
-    break;
+      case "#register":
+        main.appendChild(register())
+        break;
 
-    case "#feed": 
-    main.appendChild(feed())
-    break;
+      case "#feed":
+        main.appendChild(feed())
+        break;
 
-    default:
-    main.appendChild(home()) 
+      default:
+        main.appendChild(home())
     }
   });
 }

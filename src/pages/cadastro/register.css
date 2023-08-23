@@ -34,20 +34,23 @@ form {
     flex-direction: column;
 }
 
-#return-Home{
+#return-Home {
     display: flex;
-    width: 50px; /* Defina o tamanho do botão conforme necessário */
+    width: 50px;
+    /* Defina o tamanho do botão conforme necessário */
     height: 20px;
     background-image: url(/pages/assets/return.png);
-    background-size:contain; /* Ajusta o tamanho da imagem para preencher o botão */
+    background-size: contain;
+    /* Ajusta o tamanho da imagem para preencher o botão */
     background-repeat: no-repeat;
-    background-color: transparent; /* Torna o botão transparente */
+    background-color: transparent;
+    /* Torna o botão transparente */
     border: none;
     cursor: pointer;
     position: absolute;
     top: 20px;
     left: 15px;
-    }
+}
 
 input {
     display: flex;

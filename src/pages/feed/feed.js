@@ -1,3 +1,5 @@
+import { logoutAccount } from "../../lib";
+
 export default () => {
   // Criar o elemento <link> para importar o CSS
   const designFeed = document.createElement("link");
@@ -5,12 +7,12 @@ export default () => {
   designFeed.href = "pages/feed/feed.css";
   document.head.appendChild(designFeed);
 
-   // Função para criar o modal
+  // Função para criar o modal
   function createModal() {
-  const modal = document.createElement("div");
-  modal.classList.add("modal-window");
+    const modal = document.createElement("div");
+    modal.classList.add("modal-window");
 
-  modal.innerHTML = `    
+    modal.innerHTML = `    
      <div class="modal-content">
       <label for="genre">Gênero:</label> 
         <select id="genre" name="genre">
@@ -52,24 +54,25 @@ export default () => {
       </div>
     `;
 
-  const btnClose = modal.querySelector("#btn-close");
-  btnClose.addEventListener("click", () => {
-    modal.style.display = "none"; // Oculta o modal ao clicar no botão "Fechar"
-  });
+    const btnClose = modal.querySelector("#btn-close");
+    btnClose.addEventListener("click", () => {
+      modal.style.display = "none"; // Oculta o modal ao clicar no botão "Fechar"
+    });
 
-  return modal;
-}
+    return modal;
+  }
 
-const containerFeed = document.createElement("div");
+  const containerFeed = document.createElement("div");
   containerFeed.classList.add("container");
 
   containerFeed.innerHTML = `
     <header>
+      <button id="log-out"></button>
       <img src="pages/assets/logotipo2.png" alt="Logotipo do feed">
     </header>
     <div id="welcome-user">
       <p>Seja Bem-Vindo(a)!</p>
-      <button id="log-out"><button>
+      
     </div>
 
     <div id="your-content">
@@ -88,6 +91,8 @@ const containerFeed = document.createElement("div");
     containerFeed.appendChild(modal);
     modal.style.display = "flex"; // Torna o modal visível ao clicar no botão "Esqueci minha senha"
   });
+
+  containerFeed.querySelector("#log-out").addEventListener("click", logoutAccount);
 
   return containerFeed;
 };
