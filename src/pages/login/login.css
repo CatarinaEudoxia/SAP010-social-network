@@ -11,6 +11,21 @@
     height: 100%;
 }
 
+#return-Home{
+    display: flex;
+    width: 50px; /* Defina o tamanho do botão conforme necessário */
+    height: 20px;
+    background-image: url(/pages/assets/return.png);
+    background-size:contain; /* Ajusta o tamanho da imagem para preencher o botão */
+    background-repeat: no-repeat;
+    background-color: transparent; /* Torna o botão transparente */
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    }
+
 header {
     display: flex;
     justify-content: center;
@@ -64,21 +79,6 @@ a {
     width: 300px;
     cursor: pointer;
     margin: 0 auto;
-}
-
-#btn-google {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(218, 168, 141, 1);
-    color: black;
-    border: 2px solid rgba(62, 52, 42, 1);
-    border-radius: 20px;
-    padding: 10px;
-    margin: 10px;
-    margin-top:20px;
-    width: 300px;
-    cursor: pointer;
 }
  
 #forget-password{

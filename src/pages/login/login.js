@@ -45,6 +45,7 @@ export default () => {
   
     containerLogin.innerHTML = `
       <header>
+        <button id="return-Home"></button> 
         <img src="pages/assets/logotipo.png" alt="Logotipo da tela de login">
       </header>
       
@@ -57,7 +58,6 @@ export default () => {
   
         <button id="forget-password">Esqueci minha senha</button>
   
-        <button id="btn-google">Entrar com o Google</button> 
       </div>
     `;
   

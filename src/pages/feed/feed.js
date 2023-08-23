@@ -67,8 +67,9 @@ const containerFeed = document.createElement("div");
     <header>
       <img src="pages/assets/logotipo2.png" alt="Logotipo do feed">
     </header>
-    <div id="welcome-user>
-      <p>Seja Bem-Vindo(a) !</p>
+    <div id="welcome-user">
+      <p>Seja Bem-Vindo(a)!</p>
+      <button id="log-out"><button>
     </div>
 
     <div id="your-content">

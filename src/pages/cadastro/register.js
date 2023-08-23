@@ -11,6 +11,7 @@ export default () => {
 
     containerRegister.innerHTML = `
         <header>
+        <button id="return-Home"></button> 
         <img src= "pages/assets/logotipo.png" alt="Logotipo da tela de cadastro">
         </header>
     
@@ -29,7 +30,7 @@ export default () => {
         </div>
 
     `
-
+    const registerForm = containerRegister.querySelector("#register-form");
     function validarFormulario() {
         const passwordInput = document.querySelector("#password").value;
         const confirmPassword = document.querySelector("#confirm-password").value;
@@ -42,7 +43,7 @@ export default () => {
 
     };
     
-    const registerForm = containerRegister.querySelector("#register-form");
+    
 
     registerForm.addEventListener("submit", (event) => {
      event.preventDefault(); // Evita o envio padrão do formulário
