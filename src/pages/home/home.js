@@ -1,7 +1,7 @@
 export default () => {
   function openModal() {
-    const aboutUs = document.createElement("div");
-    aboutUs.classList.add("modal-window");
+    const aboutUs = document.createElement('div');
+    aboutUs.classList.add('modal-window');
 
     aboutUs.innerHTML = `
     <div class="janela-modal" id="janela-modal">
@@ -22,23 +22,23 @@ export default () => {
         <button class="bnt-back" id="btn-back">X</button>
        </div>
     </div>   
+    `;
 
-    `
-    const btnBack = aboutUs.querySelector("#btn-back");
-    btnBack.addEventListener("click", () => {
-      aboutUs.style.display = "none";
-    })
-    return aboutUs
+    const btnBack = aboutUs.querySelector('#btn-back');
+    btnBack.addEventListener('click', () => {
+      aboutUs.style.display = 'none';
+    });
+
+    return aboutUs;
   }
 
-  const designHome = document.createElement("link");
-  designHome.rel = "stylesheet";
-  designHome.href = "pages/home/home.css";
+  const designHome = document.createElement('link');
+  designHome.rel = 'stylesheet';
+  designHome.href = 'pages/home/home.css';
   document.head.appendChild(designHome);
 
-
-  const containerHome = document.createElement("div");
-  containerHome.classList.add("container");
+  const containerHome = document.createElement('div');
+  containerHome.classList.add('container');
 
   containerHome.innerHTML = `
   <header>
@@ -53,24 +53,24 @@ export default () => {
 
     </section>
   </div>
-  
-  `
-  const btnUs = containerHome.querySelector("#btn-us");
-  btnUs.addEventListener("click", () => {
+  `;
+
+  const btnUs = containerHome.querySelector('#btn-us');
+  btnUs.addEventListener('click', () => {
     const modal = openModal();
     containerHome.appendChild(modal);
-    modal.style.display = "flex";
-  })
+    modal.style.display = 'flex';
+  });
 
-  const btnEnter = containerHome.querySelector("#btn-entrar");
-  btnEnter.addEventListener("click", () => {
-    window.location.hash = "#login";
-  })
+  const btnEnter = containerHome.querySelector('#btn-entrar');
+  btnEnter.addEventListener('click', () => {
+    window.location.hash = '#login';
+  });
 
-  const btnRegister = containerHome.querySelector("#btn-register");
-  btnRegister.addEventListener("click", () => {
-    window.location.hash = "#register";
-  })
+  const btnRegister = containerHome.querySelector('#btn-register');
+  btnRegister.addEventListener('click', () => {
+    window.location.hash = '#register';
+  });
 
   return containerHome;
-}
+};

@@ -1,15 +1,15 @@
-import { loginOn } from "../../lib";
+import { loginOn } from '../../lib';
 
 export default () => {
-  const designLogin = document.createElement("link");
-  designLogin.rel = "stylesheet";
-  designLogin.href = "pages/login/login.css";
+  const designLogin = document.createElement('link');
+  designLogin.rel = 'stylesheet';
+  designLogin.href = 'pages/login/login.css';
   document.head.appendChild(designLogin);
 
   // Função para criar o modal
   function createModal() {
-    const modal = document.createElement("div");
-    modal.classList.add("modal-window");
+    const modal = document.createElement('div');
+    modal.classList.add('modal-window');
 
     modal.innerHTML = `    
           <div class="modal-content">
@@ -22,26 +22,23 @@ export default () => {
           </div>
       `;
 
-    const btnClose = modal.querySelector("#btn-close");
-    btnClose.addEventListener("click", () => {
-      modal.style.display = "none"; // Oculta o modal ao clicar no botão "Fechar"
+    const btnClose = modal.querySelector('#btn-close');
+    btnClose.addEventListener('click', () => {
+      modal.style.display = 'none'; // Oculta o modal ao clicar no botão "Fechar"
     });
 
-    const requestForm = modal.querySelector("#request-form");
-    requestForm.addEventListener("submit", (event) => {
+    const requestForm = modal.querySelector('#request-form');
+    requestForm.addEventListener('submit', (event) => {
       event.preventDefault(); // Impede o comportamento padrão de envio do formulário
-      const emailInput = requestForm.querySelector("#modal-email");
-      const email = emailInput.value;
-      // Aqui você pode fazer algo com o e-mail digitado, como enviar uma solicitação para redefinir a senha.
-      console.log("E-mail digitado:", email);
-      modal.style.display = "none"; // Oculta o modal após o envio do formulário (simulação)
+      // const emailInput = requestForm.querySelector('#modal-email');
+      // const email = emailInput.value;
+      modal.style.display = 'none'; // Oculta o modal após o envio do formulário (simulação)
     });
-
     return modal;
   }
 
-  const containerLogin = document.createElement("div");
-  containerLogin.classList.add("container");
+  const containerLogin = document.createElement('div');
+  containerLogin.classList.add('container');
 
   containerLogin.innerHTML = `
       <header>
@@ -61,23 +58,23 @@ export default () => {
       </div>
     `;
 
-  containerLogin.querySelector("#return-Home").addEventListener("click", function () {
+  containerLogin.querySelector('#return-Home').addEventListener('click', () => {
     window.history.back();
   });
 
-  const btnModal = containerLogin.querySelector("#forget-password");
+  const btnModal = containerLogin.querySelector('#forget-password');
 
-  btnModal.addEventListener("click", () => {
+  btnModal.addEventListener('click', () => {
     const modal = createModal(); // Cria um novo modal sempre que o botão for clicado
     containerLogin.appendChild(modal);
-    modal.style.display = "flex"; // Torna o modal visível ao clicar no botão "Esqueci minha senha"
+    modal.style.display = 'flex'; // Torna o modal visível ao clicar no botão "Esqueci minha senha"
   });
 
-  const loginAccount = containerLogin.querySelector("#login-form");
-  loginAccount.addEventListener("submit", (event) => {
+  const loginAccount = containerLogin.querySelector('#login-form');
+  loginAccount.addEventListener('submit', (event) => {
     event.preventDefault(); // Evita o envio padrão do formulário
-    const emailInput = loginAccount.querySelector("#email");
-    const passwordInput = loginAccount.querySelector("#password");
+    const emailInput = loginAccount.querySelector('#email');
+    const passwordInput = loginAccount.querySelector('#password');
     const email = emailInput.value;
     const password = passwordInput.value;
 
@@ -86,4 +83,3 @@ export default () => {
 
   return containerLogin;
 };
-

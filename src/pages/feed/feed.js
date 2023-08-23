@@ -1,16 +1,16 @@
-import { logoutAccount } from "../../lib";
+import { logoutAccount } from '../../lib';
 
 export default () => {
   // Criar o elemento <link> para importar o CSS
-  const designFeed = document.createElement("link");
-  designFeed.rel = "stylesheet";
-  designFeed.href = "pages/feed/feed.css";
+  const designFeed = document.createElement('link');
+  designFeed.rel = 'stylesheet';
+  designFeed.href = 'pages/feed/feed.css';
   document.head.appendChild(designFeed);
 
   // Função para criar o modal
   function createModal() {
-    const modal = document.createElement("div");
-    modal.classList.add("modal-window");
+    const modal = document.createElement('div');
+    modal.classList.add('modal-window');
 
     modal.innerHTML = `    
      <div class="modal-content">
@@ -54,16 +54,16 @@ export default () => {
       </div>
     `;
 
-    const btnClose = modal.querySelector("#btn-close");
-    btnClose.addEventListener("click", () => {
-      modal.style.display = "none"; // Oculta o modal ao clicar no botão "Fechar"
+    const btnClose = modal.querySelector('#btn-close');
+    btnClose.addEventListener('click', () => {
+      modal.style.display = 'none'; // Oculta o modal ao clicar no botão 'Fechar'
     });
 
     return modal;
   }
 
-  const containerFeed = document.createElement("div");
-  containerFeed.classList.add("container");
+  const containerFeed = document.createElement('div');
+  containerFeed.classList.add('container');
 
   containerFeed.innerHTML = `
     <header>
@@ -84,15 +84,15 @@ export default () => {
     </div>
   `;
 
-  const btnModal = containerFeed.querySelector("#your-publication");
+  const btnModal = containerFeed.querySelector('#your-publication');
 
-  btnModal.addEventListener("click", () => {
+  btnModal.addEventListener('click', () => {
     const modal = createModal(); // Cria um novo modal sempre que o botão for clicado
     containerFeed.appendChild(modal);
-    modal.style.display = "flex"; // Torna o modal visível ao clicar no botão "Esqueci minha senha"
+    modal.style.display = 'flex'; // Torna o modal visível ao clicar no botão 'Esqueci minha senha'
   });
 
-  containerFeed.querySelector("#log-out").addEventListener("click", logoutAccount);
+  containerFeed.querySelector('#log-out').addEventListener('click', logoutAccount);
 
   return containerFeed;
 };
