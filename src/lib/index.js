@@ -4,6 +4,9 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 // https://firebase.google.com/docs/web/setup#available-libraries
+import { collection, addDoc } from "firebase/firestore"; 
+import { async } from 'regenerator-runtime';
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -49,3 +52,11 @@ export const logoutAccount = () => {
       alert('Erro ao fazer logout!', error);
     });
 };
+
+export const publishPost = async() => {
+  const docRef = await addDoc(collection(db, "collectionPosts"), {
+    nome: ("banana"),
+    verdura: "cenoura"
+  });
+  console.log("Document written with ID: ", docRef.id);
+}

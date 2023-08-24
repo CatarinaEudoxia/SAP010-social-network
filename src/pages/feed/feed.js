@@ -1,4 +1,4 @@
-import { logoutAccount } from '../../lib';
+import { logoutAccount, publishPost } from '../../lib';
 
 export default () => {
   // Criar o elemento <link> para importar o CSS
@@ -53,10 +53,21 @@ export default () => {
 
       </div>
     `;
-
+   
     const btnClose = modal.querySelector('#btn-close');
     btnClose.addEventListener('click', () => {
       modal.style.display = 'none'; // Oculta o modal ao clicar no botão 'Fechar'
+    });
+
+    const btnPublish = modal.querySelector('#btn-publish');
+    btnPublish.addEventListener('click', () => {
+      const genre = modal.querySelector('#genre').value;
+      const age = modal.querySelector('#age').value;
+      const content = modal.querySelector('#postContent').value;
+      const newPost = new Post(genre, age, content, image);
+      posts.push(newPost);
+      updateFeed(); // Isso atualizará o feed para incluir o novo post
+      modal.style.display = 'none'; // Oculta o modal após a publicação
     });
 
     return modal;
