@@ -42,9 +42,10 @@ export const loginOn = (email, password) => {
 };
 
 export const logoutAccount = () => {
-  auth.signOut().then(() => {
-    window.location.hash = '#home';
-  }).catch((error) => {
-    alert('Erro ao fazer logout!', error);
-  });
+  auth.signOut()
+    .then(() => {
+      window.location.hash = '#home';
+    }).catch((error) => {
+      alert('Erro ao fazer logout!', error);
+    });
 };

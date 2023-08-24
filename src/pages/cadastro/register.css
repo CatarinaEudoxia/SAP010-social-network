@@ -61,7 +61,7 @@ input {
     border: 2px solid rgba(62, 52, 42, 1);
     border-radius: 20px;
     padding: 10px;
-    margin-top: 20px;
+    margin-top: 10px;
     width: 300px;
     cursor: pointer;
 }
@@ -81,4 +81,5 @@ button {
     margin: 0 auto;
     margin-top: 15px;
     margin-bottom: 15px;
+    font-weight: bold;
 }

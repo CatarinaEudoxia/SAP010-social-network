@@ -6,12 +6,6 @@ import feed from './pages/feed/feed.js';
 
 const main = document.querySelector('#root');
 
-window.addEventListener('load', () => {
-  init();
-  window.location.hash = '';
-  main.appendChild(home());
-});
-
 const init = () => {
   window.addEventListener('hashchange', () => {
     main.innerHTML = '';
@@ -23,17 +17,20 @@ const init = () => {
       case '#login':
         main.appendChild(login());
         break;
-
       case '#register':
         main.appendChild(register());
         break;
-
       case '#feed':
         main.appendChild(feed());
         break;
-
       default:
         main.appendChild(home());
     }
   });
 };
+
+window.addEventListener('load', () => {
+  init();
+  window.location.hash = '';
+  main.appendChild(home());
+});

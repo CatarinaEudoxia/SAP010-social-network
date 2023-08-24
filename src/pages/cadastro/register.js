@@ -31,6 +31,7 @@ export default () => {
   });
 
   const registerForm = containerRegister.querySelector('#register-form');
+
   function validarFormulario() {
     const passwordInput = document.querySelector('#password').value;
     const confirmPassword = document.querySelector('#confirm-password').value;
@@ -39,6 +40,22 @@ export default () => {
       alert('As senhas não correspondem. Por favor, tente novamente.');
       return false;
     }
+
+    if (passwordInput.length < 6) {
+      alert('A senha deve ter pelo menos 6 caracteres.');
+      return false;
+    }
+
+    if (!/[A-Z]/.test(passwordInput) || !/[a-z]/.test(passwordInput)) {
+      alert('A senha deve conter pelo menos uma letra maiúscula e uma minúscula.');
+      return false;
+    }
+
+    if (!/[0-9]/.test(passwordInput)) {
+      alert('A senha deve conter pelo menos um número.');
+      return false;
+    }
+    // Se a senha atender a todos os requisitos, retorne true
     return true;
   }
 
