@@ -1,5 +1,4 @@
 * {
-    margin: 0;
     font-family: "Alegreya SC";
     font-size: 15px;
 }
@@ -35,6 +34,23 @@ form {
     flex-direction: column;
 }
 
+#return-Home {
+    display: flex;
+    width: 50px;
+    /* Defina o tamanho do botão conforme necessário */
+    height: 20px;
+    background-image: url(/pages/assets/return.png);
+    background-size: contain;
+    /* Ajusta o tamanho da imagem para preencher o botão */
+    background-repeat: no-repeat;
+    background-color: transparent;
+    /* Torna o botão transparente */
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 15px;
+}
 
 input {
     display: flex;
@@ -45,7 +61,7 @@ input {
     border: 2px solid rgba(62, 52, 42, 1);
     border-radius: 20px;
     padding: 10px;
-    margin-top: 20px;
+    margin-top: 10px;
     width: 300px;
     cursor: pointer;
 }
@@ -65,4 +81,5 @@ button {
     margin: 0 auto;
     margin-top: 15px;
     margin-bottom: 15px;
+    font-weight: bold;
 }
