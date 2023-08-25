@@ -53,10 +53,18 @@ export const logoutAccount = () => {
     });
 };
 
-export const publishPost = async() => {
-  const docRef = await addDoc(collection(db, "collectionPosts"), {
-    nome: ("banana"),
-    verdura: "cenoura"
-  });
-  console.log("Document written with ID: ", docRef.id);
-}
+export const publishPost = async(userName, genre, age, content) => {
+  try {
+    const docRef = await addDoc(collection(db, 'collectionPosts'), {
+      nome: userName,
+      genre: genre,
+      age: age,
+      postContent: content,
+      likes: 0,
+    });
+
+    console.log('Document written with ID: ', docRef.id);
+  } catch (error) {
+    console.error('Error adding document: ', error);
+  }
+};
