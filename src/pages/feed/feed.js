@@ -1,4 +1,4 @@
-import { logoutAccount, publishPost } from '../../lib';
+import { logoutAccount, publishPost, getPosts } from '../../lib';
 
 export default () => {
   // Criar o elemento <link> para importar o CSS
@@ -6,6 +6,13 @@ export default () => {
   designFeed.rel = 'stylesheet';
   designFeed.href = 'pages/feed/feed.css';
   document.head.appendChild(designFeed);
+
+  function createPost() {
+    getPosts()
+      .then((publishedPosts) => {//////////////////////////////////////////////////////////////////////
+        console.log(publishedPosts);
+      })
+  }
 
   // Função para criar o modal
   function createModal() {
@@ -53,7 +60,7 @@ export default () => {
 
       </div>
     `;
-   
+
     const btnClose = modal.querySelector('#btn-close');
     btnClose.addEventListener('click', () => {
       modal.style.display = 'none'; // Oculta o modal ao clicar no botão 'Fechar'
@@ -64,9 +71,9 @@ export default () => {
       const genre = modal.querySelector('#genre').value;
       const age = modal.querySelector('#age').value;
       const content = modal.querySelector('#postContent').value;
-      const newPost = new Post(genre, age, content, image);
-      posts.push(newPost);
-      updateFeed(); // Isso atualizará o feed para incluir o novo post
+      const userName = 'Banana'
+      publishPost(userName, genre, age, content)
+        .then(createPost);////////////////////////////////////////////////////////////
       modal.style.display = 'none'; // Oculta o modal após a publicação
     });
 
@@ -104,6 +111,34 @@ export default () => {
   });
 
   containerFeed.querySelector('#log-out').addEventListener('click', logoutAccount);
+  const boxForPosts = containerFeed.querySelector('.feed');//////////////////////////////////////////
+
+  function templatePosts(postContent) {//////////////////////////////////////////////
+    return `
+    <body>
+    <div class="post">
+        <div class="post-header">
+            <h2 class="user-name">${postContent.nome}</h2>
+            <p class="post-details">${postContent.genre} ${postContent.age}</p>
+        </div>
+        <div class="post-content">
+            <p>${postContent.postContent}</p>
+        </div>
+        <div class="post-actions">
+            <button class="like-button">${postContent.likes}</button>
+            <button class="delete-button">Delete</button>
+            <button class="edit-button">Edit</button>
+        </div>
+    </div>
+    `
+  }
+  /*
+    const publishedPosts = getPosts();
+  
+    publishedPosts.then(posts => {
+      const allContentPosts = posts.map(postContent => templatePosts(postContent)).join(" ");
+      boxForPosts.innerHTML = allContentPosts;
+    }); */
 
   return containerFeed;
 };

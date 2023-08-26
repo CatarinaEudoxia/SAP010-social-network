@@ -4,7 +4,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { collection, addDoc } from "firebase/firestore"; 
+import { collection, addDoc, getDocs } from "firebase/firestore";
 import { async } from 'regenerator-runtime';
 
 
@@ -53,7 +53,7 @@ export const logoutAccount = () => {
     });
 };
 
-export const publishPost = async(userName, genre, age, content) => {
+export const publishPost = async (userName, genre, age, content) => {
   try {
     const docRef = await addDoc(collection(db, 'collectionPosts'), {
       nome: userName,
@@ -62,9 +62,18 @@ export const publishPost = async(userName, genre, age, content) => {
       postContent: content,
       likes: 0,
     });
-
-    console.log('Document written with ID: ', docRef.id);
+    console.log('Post salvo com sucesso: ', docRef.id);
   } catch (error) {
-    console.error('Error adding document: ', error);
+    console.error('Falha ao salvar post: ');
   }
 };
+
+export const getPosts = async () => {
+  const querySnapshot = await getDocs(collection(db, 'collectionPosts'));
+  const allPosts = [];
+  querySnapshot.forEach((doc) => {
+    console.log(doc.data());
+    allPosts.push(doc.data())
+  });
+  return allPosts
+}
