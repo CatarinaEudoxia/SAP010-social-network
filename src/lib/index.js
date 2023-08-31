@@ -53,9 +53,10 @@ export const logoutAccount = () => {
     });
 };
 
-export const publishPost = async (userName, genre, age, content) => {
+export const publishPost = async (book, userName, genre, age, content) => {
   try {
     const docRef = await addDoc(collection(db, 'collectionPosts'), {
+      bookName: book, 
       nome: userName,
       genre: genre,
       age: age,
@@ -64,7 +65,7 @@ export const publishPost = async (userName, genre, age, content) => {
     });
     console.log('Post salvo com sucesso: ', docRef.id);
   } catch (error) {
-    console.error('Falha ao salvar post: ');
+    console.error('Falha ao salvar post:', error);
   }
 };
 

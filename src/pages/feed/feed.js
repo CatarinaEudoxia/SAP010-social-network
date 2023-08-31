@@ -9,7 +9,7 @@ export default () => {
 
   function createPost() {
     getPosts()
-      .then((publishedPosts) => {//////////////////////////////////////////////////////////////////////
+      .then((publishedPosts) => {
         console.log(publishedPosts);
       })
   }
@@ -21,6 +21,7 @@ export default () => {
 
     modal.innerHTML = `    
      <div class="modal-content">
+
       <label for="genre">Gênero:</label> 
         <select id="genre" name="genre">
           <option value="fantasy">Fantasia</option>
@@ -53,8 +54,9 @@ export default () => {
           <option value="maior-18">Maior de 18 anos</option>
         </select> 
 
-        <textarea id="postContent" name="postContent" placeholder="Que Leitura você gostaria de compartilhar..."></textarea>
-        <input type="file" id="imageUpload" name="imageUpload" accept="image/*">
+        <textarea id="book-name" placeholder="Nome do livro"></textarea> 
+
+        <textarea id="postContent" name="postContent" placeholder="Que Leitura você gostaria de compartilhar..."></textarea>  
         <button id="btn-publish">Publicar</button>
         <button id="btn-close">X</button>
 
@@ -68,12 +70,15 @@ export default () => {
 
     const btnPublish = modal.querySelector('#btn-publish');
     btnPublish.addEventListener('click', () => {
+      const book = modal.querySelector('#book-name').value;
+      const userName = 'Banana';
       const genre = modal.querySelector('#genre').value;
       const age = modal.querySelector('#age').value;
       const content = modal.querySelector('#postContent').value;
-      const userName = 'Banana'
-      publishPost(userName, genre, age, content)
-        .then(createPost);////////////////////////////////////////////////////////////
+
+      publishPost(book, userName, genre, age, content)
+        .then(createPost);
+        
       modal.style.display = 'none'; // Oculta o modal após a publicação
     });
 
@@ -111,13 +116,14 @@ export default () => {
   });
 
   containerFeed.querySelector('#log-out').addEventListener('click', logoutAccount);
-  const boxForPosts = containerFeed.querySelector('.feed');//////////////////////////////////////////
+  const boxForPosts = containerFeed.querySelector('.feed');
 
-  function templatePosts(postContent) {//////////////////////////////////////////////
+  function templatePosts(postContent) {
     return `
     <body>
     <div class="post">
         <div class="post-header">
+            <h1 id="book">${postContent.bookName}</h1> 
             <h2 class="user-name">${postContent.nome}</h2>
             <p class="post-details">${postContent.genre} ${postContent.age}</p>
         </div>
