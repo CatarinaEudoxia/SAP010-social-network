@@ -6,7 +6,7 @@ import { getFirestore } from 'firebase/firestore';
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { async } from 'regenerator-runtime';
-
+import { query, orderBy, limit } from "firebase/firestore"; 
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -53,9 +53,10 @@ export const logoutAccount = () => {
     });
 };
 
-export const publishPost = async (book, userName, genre, age, content) => {
+export const publishPost = async (publishData, book, userName, genre, age, content) => {
   try {
     const docRef = await addDoc(collection(db, 'collectionPosts'), {
+      data: publishData,
       bookName: book, 
       nome: userName,
       genre: genre,
@@ -70,11 +71,16 @@ export const publishPost = async (book, userName, genre, age, content) => {
 };
 
 export const getPosts = async () => {
-  const querySnapshot = await getDocs(collection(db, 'collectionPosts'));
-  const allPosts = [];
-  querySnapshot.forEach((doc) => {
-    console.log(doc.data());
-    allPosts.push(doc.data())
-  });
-  return allPosts
-}
+  try {
+    const q = query(collection(db, 'collectionPosts'), orderBy('data', 'desc')); // Order by 'data' field in descending order
+    const querySnapshot = await getDocs(q);
+    const allPosts = [];
+    querySnapshot.forEach((doc) => {
+      allPosts.push(doc.data());
+    });
+    return allPosts;
+  } catch (error) {
+    console.error('Erro ao obter posts:', error);
+    return []; // Retorna uma matriz vazia em caso de erro
+  }
+};

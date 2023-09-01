@@ -7,12 +7,7 @@ export default () => {
   designFeed.href = 'pages/feed/feed.css';
   document.head.appendChild(designFeed);
 
-  function createPost() {
-    getPosts()
-      .then((publishedPosts) => {
-        console.log(publishedPosts);
-      })
-  }
+
 
   // Função para criar o modal
   function createModal() {
@@ -76,9 +71,9 @@ export default () => {
       const age = modal.querySelector('#age').value;
       const content = modal.querySelector('#postContent').value;
 
-      publishPost(book, userName, genre, age, content)
+      publishPost(Date.now(), book, userName, genre, age, content)
         .then(createPost);
-        
+
       modal.style.display = 'none'; // Oculta o modal após a publicação
     });
 
@@ -138,13 +133,17 @@ export default () => {
     </div>
     `
   }
-  /*
-    const publishedPosts = getPosts();
-  
-    publishedPosts.then(posts => {
-      const allContentPosts = posts.map(postContent => templatePosts(postContent)).join(" ");
-      boxForPosts.innerHTML = allContentPosts;
-    }); */
+  function createPost() {
+    getPosts()
+      .then((posts) => {
+        console.log("oi")
+        const allContentPosts = posts.map(postContent => templatePosts(postContent)).join(" ");
+        boxForPosts.innerHTML = allContentPosts;
 
+        console.log(posts);
+      })
+  }
+
+ createPost()
   return containerFeed;
 };
