@@ -218,8 +218,8 @@ text-align: left;
 }
 
 .post-details {
-  display: inline-flex;
-  align-items: center;
+  display: flex;
+  align-items: flex-start;
   margin-top: 10px;
   margin-left: 20px;
 }
@@ -236,19 +236,21 @@ text-align: left;
   height: 25px;
   font-size: medium;
   font-weight: bold;
+  
 }
 
 .post-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background-color: rgb(255, 255, 255);
   margin: 10px;
   border: 3px solid rgba(218, 168, 141, 1);
   width: 350px;
   height: 300px;
+  padding-left: 5px;
 }
+
+
 
 .post-actions {
   display: flex;
@@ -287,6 +289,11 @@ text-align: left;
 }
 
 .delete-button {
-  margin-right: 20px;
+  margin-right: 10px;
   background-image: url(/pages/assets/delete.png);
+}
+
+/* Estado curtido */
+.liked-button {
+  background-image: url(/pages/assets/liked.png);
 }

@@ -62,7 +62,7 @@ export const publishPost = async (publishData, book, userName, genre, age, conte
       genre: genre,
       age: age,
       postContent: content,
-      likes: 0,
+      likes: 0 ,
     });
     console.log('Post salvo com sucesso: ', docRef.id);
   } catch (error) {

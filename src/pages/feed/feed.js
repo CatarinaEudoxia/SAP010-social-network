@@ -1,4 +1,4 @@
-import { logoutAccount, publishPost, getPosts } from '../../lib';
+import { logoutAccount, publishPost, getPosts } from '/lib/firebase.js';
 
 export default () => {
   // Criar o elemento <link> para importar o CSS
@@ -120,30 +120,85 @@ export default () => {
         <div class="post-header">
             <h1 id="book">${postContent.bookName}</h1> 
             <h2 class="user-name">${postContent.nome}</h2>
-            <p class="post-details">${postContent.genre} ${postContent.age}</p>
         </div>
+        <div class="post-details">
+        <p class="genre">${postContent.genre}</p>
+        <p class="age">${postContent.age}</p>
+      </div>
         <div class="post-content">
             <p>${postContent.postContent}</p>
         </div>
         <div class="post-actions">
-            <button class="like-button">${postContent.likes}</button>
-            <button class="delete-button">Delete</button>
-            <button class="edit-button">Edit</button>
+            <button class="like-button" data-post-id="${postContent.id}" data-likes="${postContent.likes || 0}">${postContent.likes || 0}</button>
+            <button class="edit-button"></button>
+            <button class="delete-button" data-post-id="${postContent.id}"></button>
         </div>
     </div>
     `
   }
+
+  /*function createPost() {
+    getPosts()
+      .then((posts) => {
+        const allContentPosts = posts.map(postContent => templatePosts(postContent)).join(" ");
+        boxForPosts.innerHTML = allContentPosts;
+  
+        const likeButtons = document.querySelectorAll('.like-button');
+  
+        likeButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const postId = button.getAttribute('data-post-id');
+            const liked = button.getAttribute('data-liked') === 'true';
+            const currentLikes = parseInt(button.textContent);
+  
+            if (liked) {
+              // Desfazer a ação de curtir (remover a classe 'liked-button')
+              button.textContent = currentLikes - 1;
+              button.setAttribute('data-liked', 'false');
+              button.classList.remove('liked-button');
+              button.classList.add('not-liked-button');
+            } else {
+              // Realizar a ação de curtir (adicionar a classe 'liked-button')
+              button.textContent = currentLikes + 1;
+              button.setAttribute('data-liked', 'true');
+              button.classList.remove('not-liked-button');
+              button.classList.add('liked-button');
+            }
+          });
+        });
+      });
+  }*/
+
   function createPost() {
     getPosts()
       .then((posts) => {
-        console.log("oi")
         const allContentPosts = posts.map(postContent => templatePosts(postContent)).join(" ");
         boxForPosts.innerHTML = allContentPosts;
 
-        console.log(posts);
-      })
+        const likeButtons = document.querySelectorAll('.like-button');
+
+        likeButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const postId = button.getAttribute('data-post-id');
+            const liked = button.getAttribute('data-liked') === 'true';
+            const currentLikes = parseInt(button.textContent);
+
+            if (liked) {
+              // Desfazer a ação de curtir (remover a classe 'liked-button')
+              button.textContent = currentLikes - 1;
+              button.setAttribute('data-liked', 'false');
+              button.classList.remove('liked-button'); // Remova esta linha se não tiver uma classe 'liked-button' no seu CSS
+            } else {
+              // Realizar a ação de curtir (adicionar a classe 'liked-button')
+              button.textContent = currentLikes + 1;
+              button.setAttribute('data-liked', 'true');
+              button.classList.add('liked-button'); // Adicione esta classe se você a tiver no seu CSS
+            }
+          });
+        });
+      });
   }
 
- createPost()
+  createPost()
   return containerFeed;
 };

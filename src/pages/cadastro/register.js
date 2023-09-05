@@ -1,4 +1,4 @@
-import { registerAccount } from '../../lib';
+import { registerAccount } from '/lib/firebase.js';
 
 export default () => {
   const designLogin = document.createElement('link');
