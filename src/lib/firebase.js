@@ -6,7 +6,7 @@ import { getFirestore } from 'firebase/firestore';
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { async } from 'regenerator-runtime';
-import { query, orderBy, limit, doc, deleteDoc } from "firebase/firestore"; 
+import { query, orderBy, limit, doc, deleteDoc, updateDoc } from "firebase/firestore"; 
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -56,6 +56,7 @@ export const logoutAccount = () => {
 export const publishPost = async (publishData, book, userName, genre, age, content) => {
   try {
     const docRef = await addDoc(collection(db, 'collectionPosts'), {
+      id: Date.now(),
       data: publishData,
       bookName: book, 
       nome: userName,
@@ -74,9 +75,11 @@ export const getPosts = async () => {
   try {
     const q = query(collection(db, 'collectionPosts'), orderBy('data', 'desc')); // Order by 'data' field in descending order
     const querySnapshot = await getDocs(q);
-    const allPosts = [];
+     const allPosts = [];
     querySnapshot.forEach((doc) => {
-      allPosts.push(doc.data());
+      const post = doc.data();
+      post.id = doc.id; // Defina o ID do documento como parte dos dados
+      allPosts.push(post);
     });
     return allPosts;
   } catch (error) {
@@ -85,13 +88,65 @@ export const getPosts = async () => {
   }
 };
 
+/*const allPosts = [];
+    querySnapshot.forEach((doc) => {
+      allPosts.push(doc.data());
+    });
+    return allPosts;
+  } catch (error) {
+    console.error('Erro ao obter posts:', error);
+    return [];*/
+
 export const deletePosts = async(postId) => {
   try {
+    console.log('Excluindo post', postId);
     const docReference = doc(db, 'collectionPosts', postId);
     await deleteDoc(docReference);
     console.log('Excluído')
   }
   catch (error) {
     console.error('Erro ao excluir:', error);
+  }
+};
+
+// Função para curtir um post
+export const likePost = async (postId) => {
+  try {
+    const postRef = doc(db, 'collectionPosts', postId);
+
+    // Obtém os dados do post atual
+    const postSnapshot = await getDoc(postRef);
+    const postData = postSnapshot.data();
+
+    // Atualiza o número de curtidas
+    const newLikes = (postData.likes || 0) + 1;
+
+    // Atualiza o campo "likes" no Firestore
+    await updateDoc(postRef, {
+      likes: newLikes
+    });
+  } catch (error) {
+    console.error('Erro ao curtir o post:', error);
+  }
+};
+
+// Função para descurtir um post
+export const unlikePost = async (postId) => {
+  try {
+    const postRef = doc(db, 'collectionPosts', postId);
+
+    // Obtém os dados do post atual
+    const postSnapshot = await getDoc(postRef);
+    const postData = postSnapshot.data();
+
+    // Verifica se há curtidas para evitar números negativos
+    const newLikes = Math.max((postData.likes || 0) - 1, 0);
+
+    // Atualiza o campo "likes" no Firestore
+    await updateDoc(postRef, {
+      likes: newLikes
+    });
+  } catch (error) {
+    console.error('Erro ao descurtir o post:', error);
   }
 };

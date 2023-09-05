@@ -169,45 +169,46 @@ export default () => {
       });
   }*/
 
-  function createPost() {
-    getPosts()
-      .then((posts) => {
-        const allContentPosts = posts.map(postContent => templatePosts(postContent)).join(" ");
-        boxForPosts.innerHTML = allContentPosts;
+    function createPost() {
+      getPosts()
+        .then((posts) => {
+          const allContentPosts = posts.map(postContent => templatePosts(postContent)).join(" ");
+          boxForPosts.innerHTML = allContentPosts;
 
-        const deleteButton = document.querySelectorAll('.delete-button');
+          const deleteButton = document.querySelectorAll('.delete-button');
 
-        deleteButton.forEach(button => {
-          button.addEventListener('click', () => {
-            const postId = button.getAttribute('data-post-id');
-            deletePosts(postId);
+          deleteButton.forEach(button => {
+            button.addEventListener('click', () => {
+              const postId = button.getAttribute('data-post-id');
+              console.log('postId',postId);
+              deletePosts(postId);
+              });
+            });   
+
+          const likeButtons = document.querySelectorAll('.like-button');
+
+          likeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+              const postId = button.getAttribute('data-post-id');
+              const liked = button.getAttribute('data-liked') === 'true';
+              const currentLikes = parseInt(button.textContent);
+
+              if (liked) {
+                // Desfazer a ação de curtir (remover a classe 'liked-button')
+                button.textContent = currentLikes - 1;
+                button.setAttribute('data-liked', 'false');
+                button.classList.remove('liked-button'); // Remova esta linha se não tiver uma classe 'liked-button' no seu CSS
+              } else {
+                // Realizar a ação de curtir (adicionar a classe 'liked-button')
+                button.textContent = currentLikes + 1;
+                button.setAttribute('data-liked', 'true');
+                button.classList.add('liked-button'); // Adicione esta classe se você a tiver no seu CSS
+              }
             });
-          });   
-
-        const likeButtons = document.querySelectorAll('.like-button');
-
-        likeButtons.forEach(button => {
-          button.addEventListener('click', () => {
-            const postId = button.getAttribute('data-post-id');
-            const liked = button.getAttribute('data-liked') === 'true';
-            const currentLikes = parseInt(button.textContent);
-
-            if (liked) {
-              // Desfazer a ação de curtir (remover a classe 'liked-button')
-              button.textContent = currentLikes - 1;
-              button.setAttribute('data-liked', 'false');
-              button.classList.remove('liked-button'); // Remova esta linha se não tiver uma classe 'liked-button' no seu CSS
-            } else {
-              // Realizar a ação de curtir (adicionar a classe 'liked-button')
-              button.textContent = currentLikes + 1;
-              button.setAttribute('data-liked', 'true');
-              button.classList.add('liked-button'); // Adicione esta classe se você a tiver no seu CSS
-            }
           });
         });
-      });
-  }
+    }
 
-  createPost()
+    createPost()
   return containerFeed;
 };
