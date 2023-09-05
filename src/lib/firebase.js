@@ -6,7 +6,7 @@ import { getFirestore } from 'firebase/firestore';
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { async } from 'regenerator-runtime';
-import { query, orderBy, limit } from "firebase/firestore"; 
+import { query, orderBy, limit, doc, deleteDoc } from "firebase/firestore"; 
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -82,5 +82,16 @@ export const getPosts = async () => {
   } catch (error) {
     console.error('Erro ao obter posts:', error);
     return []; // Retorna uma matriz vazia em caso de erro
+  }
+};
+
+export const deletePosts = async(postId) => {
+  try {
+    const docReference = doc(db, 'collectionPosts', postId);
+    await deleteDoc(docReference);
+    console.log('Excluído')
+  }
+  catch (error) {
+    console.error('Erro ao excluir:', error);
   }
 };

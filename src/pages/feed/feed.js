@@ -1,4 +1,4 @@
-import { logoutAccount, publishPost, getPosts } from '/lib/firebase.js';
+import { logoutAccount, publishPost, getPosts, deletePosts } from '/lib/firebase.js';
 
 export default () => {
   // Criar o elemento <link> para importar o CSS
@@ -174,6 +174,15 @@ export default () => {
       .then((posts) => {
         const allContentPosts = posts.map(postContent => templatePosts(postContent)).join(" ");
         boxForPosts.innerHTML = allContentPosts;
+
+        const deleteButton = document.querySelectorAll('.delete-button');
+
+        deleteButton.forEach(button => {
+          button.addEventListener('click', () => {
+            const postId = button.getAttribute('data-post-id');
+            deletePosts(postId);
+            });
+          });   
 
         const likeButtons = document.querySelectorAll('.like-button');
 
