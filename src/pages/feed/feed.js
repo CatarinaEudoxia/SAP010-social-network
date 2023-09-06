@@ -7,8 +7,6 @@ export default () => {
   designFeed.href = 'pages/feed/feed.css';
   document.head.appendChild(designFeed);
 
-
-
   // Função para criar o modal
   function createModal() {
     const modal = document.createElement('div');
@@ -116,7 +114,7 @@ export default () => {
   function templatePosts(postContent) {
     return `
     <body>
-    <div class="post">
+    <div class="post" data-post-id="${postContent.id}">
         <div class="post-header">
             <h1 id="book">${postContent.bookName}</h1> 
             <h2 class="user-name">${postContent.nome}</h2>
@@ -137,38 +135,6 @@ export default () => {
     `
   }
 
-  /*function createPost() {
-    getPosts()
-      .then((posts) => {
-        const allContentPosts = posts.map(postContent => templatePosts(postContent)).join(" ");
-        boxForPosts.innerHTML = allContentPosts;
-  
-        const likeButtons = document.querySelectorAll('.like-button');
-  
-        likeButtons.forEach(button => {
-          button.addEventListener('click', () => {
-            const postId = button.getAttribute('data-post-id');
-            const liked = button.getAttribute('data-liked') === 'true';
-            const currentLikes = parseInt(button.textContent);
-  
-            if (liked) {
-              // Desfazer a ação de curtir (remover a classe 'liked-button')
-              button.textContent = currentLikes - 1;
-              button.setAttribute('data-liked', 'false');
-              button.classList.remove('liked-button');
-              button.classList.add('not-liked-button');
-            } else {
-              // Realizar a ação de curtir (adicionar a classe 'liked-button')
-              button.textContent = currentLikes + 1;
-              button.setAttribute('data-liked', 'true');
-              button.classList.remove('not-liked-button');
-              button.classList.add('liked-button');
-            }
-          });
-        });
-      });
-  }*/
-
     function createPost() {
       getPosts()
         .then((posts) => {
@@ -180,8 +146,18 @@ export default () => {
           deleteButton.forEach(button => {
             button.addEventListener('click', () => {
               const postId = button.getAttribute('data-post-id');
-              console.log('postId',postId);
-              deletePosts(postId);
+              deletePosts(postId)
+                .then(() => {
+        
+                // Remova o elemento HTML correspondente ao post da interface do usuário
+                const postElement = document.querySelector(`.post[data-post-id="${postId}"]`);
+                if (postElement) {
+                  postElement.remove();
+                }
+              })
+              .catch(error => {
+                console.error("Erro ao excluir o post:", error);
+              });
               });
             });   
 

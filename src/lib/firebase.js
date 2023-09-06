@@ -6,7 +6,7 @@ import { getFirestore } from 'firebase/firestore';
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { async } from 'regenerator-runtime';
-import { query, orderBy, limit, doc, deleteDoc, updateDoc } from "firebase/firestore"; 
+import { query, orderBy, limit, doc, deleteDoc } from "firebase/firestore"; 
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -65,7 +65,6 @@ export const publishPost = async (publishData, book, userName, genre, age, conte
       postContent: content,
       likes: 0 ,
     });
-    console.log('Post salvo com sucesso: ', docRef.id);
   } catch (error) {
     console.error('Falha ao salvar post:', error);
   }
@@ -99,54 +98,10 @@ export const getPosts = async () => {
 
 export const deletePosts = async(postId) => {
   try {
-    console.log('Excluindo post', postId);
     const docReference = doc(db, 'collectionPosts', postId);
     await deleteDoc(docReference);
-    console.log('Excluído')
   }
   catch (error) {
     console.error('Erro ao excluir:', error);
-  }
-};
-
-// Função para curtir um post
-export const likePost = async (postId) => {
-  try {
-    const postRef = doc(db, 'collectionPosts', postId);
-
-    // Obtém os dados do post atual
-    const postSnapshot = await getDoc(postRef);
-    const postData = postSnapshot.data();
-
-    // Atualiza o número de curtidas
-    const newLikes = (postData.likes || 0) + 1;
-
-    // Atualiza o campo "likes" no Firestore
-    await updateDoc(postRef, {
-      likes: newLikes
-    });
-  } catch (error) {
-    console.error('Erro ao curtir o post:', error);
-  }
-};
-
-// Função para descurtir um post
-export const unlikePost = async (postId) => {
-  try {
-    const postRef = doc(db, 'collectionPosts', postId);
-
-    // Obtém os dados do post atual
-    const postSnapshot = await getDoc(postRef);
-    const postData = postSnapshot.data();
-
-    // Verifica se há curtidas para evitar números negativos
-    const newLikes = Math.max((postData.likes || 0) - 1, 0);
-
-    // Atualiza o campo "likes" no Firestore
-    await updateDoc(postRef, {
-      likes: newLikes
-    });
-  } catch (error) {
-    console.error('Erro ao descurtir o post:', error);
   }
 };
