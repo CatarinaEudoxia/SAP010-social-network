@@ -141,3 +141,42 @@ a {
     color: black;
     font-weight: bold;
 }
+
+@media (min-width: 768px) {
+    img {
+        width: 300px;
+    }
+    
+    #btn-entrar {
+        font-size: large;
+    }
+    
+    #btn-register {
+        font-size: large;
+    }
+
+    h1 {
+        font-size: x-large;
+        margin-bottom: 40px;
+        font-weight: bold;
+    }
+    
+    #img-book {
+        width: 100px;
+        margin-bottom: 10px;
+    }
+    
+    p {
+        text-align: justify;
+        font-size: larger;
+        margin-bottom: 20px;
+    }
+    
+    a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        font-size: larger;
+    }
+    
+}
