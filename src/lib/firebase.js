@@ -27,6 +27,7 @@ export const registerAccount = (email, password) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       alert('Cadastro realizado com sucesso!', userCredential);
+      window.location.hash = '#login';
     })
     .catch((error) => {
       alert('Falha ao cadastrar usuário!', error);
