@@ -15,7 +15,7 @@ img {
 form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 2px;
 }
 
 
@@ -87,19 +87,18 @@ button {
 @media (min-width: 768px) {
    
     img {
-        width: 300px;
+        width: 250px;
     }
     
     form {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 2px;
     }
     
     
     .container {
         display: flex;
-        flex-direction: row;
         align-items: center;
         width: 100%;
         height: 100%;
