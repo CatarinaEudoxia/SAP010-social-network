@@ -41,7 +41,7 @@ img {
   align-items: center;
   background-color: rgb(255, 255, 255);
   color: black;
-  border: 2px solid rgba(218, 168, 141, 1);
+  border: 3px solid rgba(218, 168, 141, 1);
   border-radius: 20px;
   padding: 10px;
   margin: 10px;
@@ -184,12 +184,13 @@ input {
   border: 3px solid rgba(218, 168, 141, 1);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   width: 360px;
-  height: 400px;
+  height: auto;
   border-radius: 40px;
 }
 
+
 #config-text{
-font-size: x-large;
+font-size: 20px;
 text-align: left;
 }
 
@@ -197,15 +198,19 @@ text-align: left;
   text-align: left;
   display: flex;
   margin-left: 20px;
+  margin-right: 20px;
   font-size: 25px;
   word-break: break-all;
+  margin-bottom: 2px;
+  color: #cf4f45;
 }
 
 .user-name {
   text-align: left;
   display: flex;
   margin-left: 20px;
-  font-size: 15px;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .post-header {
@@ -214,7 +219,8 @@ text-align: left;
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  padding: 20px;
+  margin-top: 20px;
+
 }
 
 .post-details {
@@ -222,7 +228,6 @@ text-align: left;
   align-items: flex-start;
   margin-left: 10px;
   display: flex;
-  align-items: flex-start;
   margin-right: auto; 
 }
 
@@ -230,15 +235,16 @@ text-align: left;
 .age {
   display: inline-flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   border: 3px solid rgba(218, 168, 141, 1);
   margin-right: 10px;
   border-radius: 20px;
-  width: 80px;
-  height: 25px;
+  width: auto;
+  height: 15px;
   font-size: medium;
   font-weight: bold;
-  
+  margin: 10px;
+  padding: 10px;
 }
 
 .post-content {
@@ -251,6 +257,7 @@ text-align: left;
   height: 300px;
   padding-left: 5px;
   word-break: break-all;
+  overflow: auto;
 }
 
 .post-actions {
@@ -305,6 +312,11 @@ text-align: left;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+p {
+  text-align: justify;
+  margin: 20px;
 }
 
 @media (min-width: 768px) {
