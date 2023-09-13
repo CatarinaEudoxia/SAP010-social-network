@@ -1,4 +1,4 @@
-import { loginOn } from '../../lib';
+import { loginOn } from '/lib/firebase.js';
 
 export default () => {
   const designLogin = document.createElement('link');

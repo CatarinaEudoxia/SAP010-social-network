@@ -13,7 +13,7 @@
 
 #return-Home {
     display: flex;
-    width: 50px;
+    width: 60px;
     /* Defina o tamanho do botão conforme necessário */
     height: 20px;
     background-image: url(/pages/assets/return.png);
@@ -151,4 +151,12 @@ a {
     width: 250px;
     cursor: pointer;
     margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    
+    img {
+        width: 300px;
+    }
+
 }

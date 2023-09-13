@@ -1,4 +1,4 @@
-import { logoutAccount, publishPost, getPosts } from '../../lib';
+import { getCurrentUser, logoutAccount, publishPost, getPosts, deletePosts } from '/lib/firebase.js';
 
 export default () => {
   // Criar o elemento <link> para importar o CSS
@@ -7,8 +7,6 @@ export default () => {
   designFeed.href = 'pages/feed/feed.css';
   document.head.appendChild(designFeed);
 
-
-
   // Função para criar o modal
   function createModal() {
     const modal = document.createElement('div');
@@ -16,10 +14,9 @@ export default () => {
 
     modal.innerHTML = `    
      <div class="modal-content">
-
       <label for="genre">Gênero:</label> 
         <select id="genre" name="genre">
-          <option value="fantasy">Fantasia</option>
+          <option value="fantasia">Fantasia</option>
           <option value="sci-fi">Ficção Científica</option>
           <option value="romance">Romance</option>
           <option value="mystery">Mistério</option>
@@ -48,13 +45,10 @@ export default () => {
           <option value="maior-16">Maior de 16 anos</option>
           <option value="maior-18">Maior de 18 anos</option>
         </select> 
-
         <textarea id="book-name" placeholder="Nome do livro"></textarea> 
-
         <textarea id="postContent" name="postContent" placeholder="Que Leitura você gostaria de compartilhar..."></textarea>  
         <button id="btn-publish">Publicar</button>
         <button id="btn-close">X</button>
-
       </div>
     `;
 
@@ -66,7 +60,7 @@ export default () => {
     const btnPublish = modal.querySelector('#btn-publish');
     btnPublish.addEventListener('click', () => {
       const book = modal.querySelector('#book-name').value;
-      const userName = 'Banana';
+      const userName = getCurrentUser()?.userName || 'Usuário Desconhecido'; // Get the username or use a default value
       const genre = modal.querySelector('#genre').value;
       const age = modal.querySelector('#age').value;
       const content = modal.querySelector('#postContent').value;
@@ -83,14 +77,16 @@ export default () => {
   const containerFeed = document.createElement('div');
   containerFeed.classList.add('container');
 
+  // Obter o nome do usuário ou usar "Usuário Desconhecido" como padrão
+  const userName = getCurrentUser()?.userName || 'Usuário Desconhecido';
+
   containerFeed.innerHTML = `
     <header>
       <button id="log-out"></button>
       <img src="pages/assets/logotipo2.png" alt="Logotipo do feed">
     </header>
     <div id="welcome-user">
-      <p>Seja Bem-Vindo(a)!</p>
-      
+      <p>Seja Bem-Vindo(a), ${userName}!</p>
     </div>
 
     <div id="your-content">
@@ -116,34 +112,77 @@ export default () => {
   function templatePosts(postContent) {
     return `
     <body>
-    <div class="post">
+    <div class="post" data-post-id="${postContent.id}">
         <div class="post-header">
             <h1 id="book">${postContent.bookName}</h1> 
-            <h2 class="user-name">${postContent.nome}</h2>
-            <p class="post-details">${postContent.genre} ${postContent.age}</p>
+             <h2 class="user-name">${postContent.userId}</h2>
         </div>
+        <div class="post-details">
+        <p class="genre">${postContent.genre}</p>
+        <p class="age">${postContent.age}</p>
+      </div>
         <div class="post-content">
             <p>${postContent.postContent}</p>
         </div>
         <div class="post-actions">
-            <button class="like-button">${postContent.likes}</button>
-            <button class="delete-button">Delete</button>
-            <button class="edit-button">Edit</button>
+            <button class="like-button" data-post-id="${postContent.id}" data-likes="${postContent.likes || 0}">${postContent.likes || 0}</button>
+            <button class="edit-button"></button>
+            <button class="delete-button" data-post-id="${postContent.id}"></button>
         </div>
     </div>
     `
   }
+
   function createPost() {
     getPosts()
       .then((posts) => {
-        console.log("oi")
         const allContentPosts = posts.map(postContent => templatePosts(postContent)).join(" ");
         boxForPosts.innerHTML = allContentPosts;
 
-        console.log(posts);
-      })
+        const deleteButton = document.querySelectorAll('.delete-button');
+
+        deleteButton.forEach(button => {
+          button.addEventListener('click', () => {
+            const postId = button.getAttribute('data-post-id');
+            deletePosts(postId)
+              .then(() => {
+
+                // Remova o elemento HTML correspondente ao post da interface do usuário
+                const postElement = document.querySelector(`.post[data-post-id="${postId}"]`);
+                if (postElement) {
+                  postElement.remove();
+                }
+              })
+              .catch(error => {
+                console.error("Erro ao excluir o post:", error);
+              });
+          });
+        });
+
+        const likeButtons = document.querySelectorAll('.like-button');
+
+        likeButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const postId = button.getAttribute('data-post-id');
+            const liked = button.getAttribute('data-liked') === 'true';
+            const currentLikes = parseInt(button.textContent);
+
+            if (liked) {
+              // Desfazer a ação de curtir (remover a classe 'liked-button')
+              button.textContent = currentLikes - 1;
+              button.setAttribute('data-liked', 'false');
+              button.classList.remove('liked-button'); // Remova esta linha se não tiver uma classe 'liked-button' no seu CSS
+            } else {
+              // Realizar a ação de curtir (adicionar a classe 'liked-button')
+              button.textContent = currentLikes + 1;
+              button.setAttribute('data-liked', 'true');
+              button.classList.add('liked-button'); // Adicione esta classe se você a tiver no seu CSS
+            }
+          });
+        });
+      });
   }
 
- createPost()
+  createPost();
   return containerFeed;
 };

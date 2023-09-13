@@ -1,4 +1,4 @@
-import { registerAccount } from '../../lib';
+import { registerAccount } from '/lib/firebase.js';
 
 export default () => {
   const designLogin = document.createElement('link');
@@ -33,6 +33,7 @@ export default () => {
   const registerForm = containerRegister.querySelector('#register-form');
 
   function validarFormulario() {
+    const nameInput = document.querySelector('#your-name').value; // Captura o valor do campo de nome
     const passwordInput = document.querySelector('#password').value;
     const confirmPassword = document.querySelector('#confirm-password').value;
 
@@ -63,11 +64,13 @@ export default () => {
     event.preventDefault(); // Evita o envio padrão do formulário
     const emailInput = registerForm.querySelector('#email');
     const passwordInput = registerForm.querySelector('#password');
+    const nameInput = registerForm.querySelector('#your-name'); // Captura o campo de nome
     const email = emailInput.value;
     const password = passwordInput.value;
+    const name = nameInput.value; // Obtém o valor do campo de nome
 
     if (validarFormulario()) {
-      registerAccount(email, password); // Chama a função de registro de conta
+      registerAccount(email, password, name); // Atualiza a função para passar o nome
     }
   });
 
