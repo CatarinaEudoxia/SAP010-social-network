@@ -1,8 +1,8 @@
-# <h1 align="center"> [Social Network — Wlamel](https://catarinaeudoxia.github.io/SAP010-data-lovers/) </h1>
+# <h1 align="center"> [Social Network — Wlamel Book's](https://catarinaeudoxia.github.io/SAP010-data-lovers/) </h1>
 
 
-<p style="text-align:center;">
-  <img src="src/pages/assets/logotipo2.png" alt="pokepidia" width="300">
+<p align="center">
+  <img src="src/pages/assets/logotipo2.png" alt="wlamellogo" width="300">
 </p>
 
 ## Índice
@@ -10,27 +10,42 @@
 * [1. Prelúdio](#1-prelúdio)
 * [2. Visão geral do projeto](#2-visão-geral-do-projeto)
 * [3. Objetivos](#3-objetivos)
-* [4. Protótipos](#4-protótipos)
-* [5. Critérios de aceitação e hacker edition alcançados](#5-critérios-de-aceitação-e-hacker-edition-alcançados)
-* [6. Ferramentas e mecanismos usados](#6-ferramentas-e-mecanismos-usados)
-* [7. Checklist](#7-checklist)
-* [8. PokeStop aqui](#8-wlamel-aqui)
-* [9. Projeto desenvolvido por](#9-projeto-desenvolvido-por)
+* [4. Histórias do Usuário](#4-histórias-do-usuário)
+* [5. Protótipos](#5-protótipos)
+* [6. Critérios de aceitação e hacker edition alcançados](#6-critérios-de-aceitação-e-hacker-edition-alcançados)
+* [7. Ferramentas e mecanismos usados](#7-ferramentas-e-mecanismos-usados)
+* [8. Checklist](#8-checklist)
+* [9. Wlamel aqui](#9-wlamel-aqui)
+* [10. Projeto desenvolvido por](#10-projeto-desenvolvido-por)
 
 ***
 
 ## 1. Prelúdio
 
-O projeto Social Network foi elaborado com o propósito de aprimorar nossas habilidades e aplicar os conhecimentos adquiridos durante o bootcamp da Laboratória. Nosso principal objetivo neste projeto foi a construção de uma rede social, a WlaMel Book's, que permitisse qualquer usuário criar uma conta de acesso, logar-se com ela, criar, editar, dar likes e deletar publicações. Para construção da nossa página utilizamos diversas técnicas, inclçuindo a construção de uma Single-page Application (SPA) responsiva (com mais de uma tela/ página) na qual seja possível ler e escrever dados, além do trabalho colaborativo no GitHub. Tudo isso foi realizado a partir de um arquivo de dados fornecido pela Laboratória, proporcionando uma experiência prática e enriquecedora.
+O projeto Social Network é uma parte integrante do bootcamp da Laboratória. Foi concebido com o objetivo de aprimorar as habilidades das participantes e aplicar os conhecimentos adquiridos durante o programa de treinamento. O foco principal deste projeto era criar a rede social WlaMel Book's, permitindo que os usuários criassem contas, fizessem login, criassem, editassem, curtissem e excluíssem postagens. Para construir a plataforma, foram empregadas diversas técnicas, incluindo a criação de uma Single-page Application (SPA) responsiva com várias telas para leitura e escrita de dados. Além disso, o projeto envolveu colaboração no GitHub e o uso de um conjunto de dados fornecido pela Laboratória, proporcionando uma experiência prática e enriquecedora para as participantes.
 
 
 ## 2. Visão geral do projeto
 
-Em nosso emocionante projeto, fomos apresentadas a uma variedade de temas interessantes, mas escolhemos criar uma rede social para leitores onde usuários pudessem compartilhar e discutir sobre os livros lidos, como num clube do livro. 
+**Bem-vindo à WlaMel Book's: Sua Rede Social para Leitores!**
 
-Com determinação e dedicação, aprendemos a trabalhar com a construção de uma SPA onde fizemos uma janela modal em algumas página, utilizando funções, parâmetros, map, filter, sort e cálculo agregado. Além disso, mergulhamos no mundo do Git colaborativo, onde pudemos trabalhar em equipe e aprender com cada passo dado.
+Em nosso emocionante projeto, mergulhamos em um mundo literário apaixonante e decidimos criar a WlaMel Book's, uma plataforma que permite a todos os amantes de livros compartilharem suas leituras, como se estivessem participando de um clube do livro virtual.
 
-Embora sejamos iniciantes na programação, estamos animados para compartilhar os resultados de nossos esforços. Buscamos criar uma experiência envolvente, despertando a curiosidade e a paixão pelos Pokémons. Queremos que todos possam se divertir ao explorar as características de cada criatura, conectar pessoas apaixonadas por esse mundo e oferecer uma interface interativa que proporciona uma imersão única.
+Com determinação e dedicação, embarcamos na jornada de construir uma Single Page Application (SPA) que oferece uma experiência única aos nossos usuários. Nossa aplicação permite a criação de contas autenticadas, proporcionando um espaço seguro para os apaixonados por livros compartilharem suas opiniões e descobrirem novas leituras.
+
+**Funcionalidades Especiais:**
+
+**Criação de Conta e Login Seguros:** Desenvolvemos um sistema robusto de criação de contas e autenticação de login para garantir a segurança dos dados dos nossos usuários.
+
+**Posts Personalizados:** Na WlaMel Book's, você pode criar, editar e excluir seus próprios posts sobre os livros que está lendo. Compartilhe suas opiniões, descubra novos títulos e conecte-se com outros leitores.
+
+**Interação Social:** Adoramos a interação entre leitores! Você pode dar "like" nos posts que mais gostar e compartilhar suas próprias descobertas literárias.
+
+**SPA Responsiva:** Construímos nossa plataforma como uma Single Page Application (SPA), tornando a navegação suave e eficiente, independentemente do dispositivo que você estiver usando.
+
+Além disso, nossa equipe se aprofundou no mundo do Git colaborativo, permitindo-nos trabalhar em equipe e aprender uns com os outros a cada passo dado. Mesmo sendo iniciantes na programação, estamos animados para compartilhar os resultados de nossos esforços.
+
+Nossa missão é criar uma experiência envolvente que desperte a curiosidade e a paixão pela leitura. Queremos que todos possam se divertir compartilhando suas leituras, se conectar a outras pessoas igualmente apaixonadas por esse mundo literário e oferecer uma interface interativa que proporciona uma imersão única.
 
 Estamos empolgadas para tê-lo(a) ao nosso lado nessa incrível jornada como programadoras em desenvolvimento!
 
@@ -160,27 +175,43 @@ Critérios mínimos de aceitação do projeto:
 ## 8. Checklist
 
 [✔] Usar VanillaJS.
+
 [✔] Passa pelo linter (npm run pretest)
+
 [✔] Passa pelos testes (npm test)
+
 [✔] Inclui uma definição de produto clara e informativa no README.md.
+
 [✔] Inclui histórias de usuário no README.md.
+
 [✔] Inclui rascunho da solução (protótipo de baixa fidelidade) no README.md.
+
 [✔] UI: É responsivo.
+
 [✔] É uma SPA.
-[✔] É responsivo.
+
 [✔] Login com Firebase (login, cadastro e postagens)
+
 [✔] O usuário deve poder criar uma conta de acesso ou autenticar-se com conta de e-mail e senha e também com uma conta do Google.
+
 [✔] Somente usuários com contas válidas têm acesso permitido.
+
 [✔] Não haver usuários repetidos.
+
 [✔] A conta do usuário deve ser um email válido.
+
 [✔] O que o usuário digita no campo de senha (_input_) deve ser secreto.
+
 [✔] Quando o formulário de registro ou login é enviado, ele deve ser validado.
+
 [✔] Se houver erros, mensagens descritivas devem ser exibidas para ajudar o usuário.
+
+<br>
 
 # 9. Wlamel aqui:
 
-### Aproveite a parada e de uma olhada na nossa [PokeStop](https://catarinaeudoxia.github.io/SAP010-data-lovers/)! 
-<img src="src/pages/assets/booklogo.gif" alt="livro" width="200" height="200" >
+### Aproveite a pausa da sua leitura e nos conte o que está lendo [Wlamel Books](https://catarinaeudoxia.github.io/SAP010-data-lovers/)! 
+<img src="src/pages/assets/booklogo.gif" alt="livro" width="400" height="250" >
 
 <br>
 
@@ -193,7 +224,7 @@ Critérios mínimos de aceitação do projeto:
         <a href="#">
           <img src="https://avatars.githubusercontent.com/u/129068843?s=400&u=07f6693114af32c3fc33f1913fde52c78b9dfd85&v=4" width="100px;" alt="Foto da Catarina no GitHub"/><br>
           <sub>
-            <b>Cibelli M. do Monte</b>
+            <b>Catarina Eudoxia Ferreira</b>
           </sub>
         </a>
       </td>
@@ -201,7 +232,7 @@ Critérios mínimos de aceitação do projeto:
         <a href="#">
           <img src="https://avatars.githubusercontent.com/u/131369817?v=4" width="100px;" alt="Foto da Cibelli no GitHub"/><br> 
           <sub>
-            <b>Catarina Eudoxia Ferreira</b>
+            <b>Cibelli M. do Monte</b>
           </sub>
         </a>
       </td>

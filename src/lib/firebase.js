@@ -1,19 +1,26 @@
 import { initializeApp } from 'firebase/app';
-import { async } from 'regenerator-runtime';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import { getFirestore, collection, addDoc, getDocs, query, orderBy, doc, deleteDoc, getDoc, where } from 'firebase/firestore';
-// Import the functions you need from the SDKs you need
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  query,
+  orderBy,
+  doc,
+  deleteDoc,
+  where,
+} from 'firebase/firestore';
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
+
   apiKey: 'AIzaSyCQWC6WeCZe1egaAyDnI7EhcuUkYWmBclA',
   authDomain: 'wlamel-book-s.firebaseapp.com',
   projectId: 'wlamel-book-s',
   storageBucket: 'wlamel-book-s.appspot.com',
   messagingSenderId: '608921320613',
   appId: '1:608921320613:web:bfada4de699f662bcca14c',
+
 };
 
 // Initialize Firebase
@@ -31,10 +38,9 @@ export const registerAccount = (email, password, userName) => {
 
       const userData = {
         email: user.email,
-        userName: userName,
+        userName,
       };
 
-      // Crie um documento de usuário no Firestore usando o mesmo UID como identificador do documento
       addDoc(collection(db, 'users'), { ...userData, userId })
         .then(() => {
           alert('Cadastro realizado com sucesso!');
@@ -49,24 +55,36 @@ export const registerAccount = (email, password, userName) => {
     });
 };
 
+export const getUserNameFromDatabase = async (email) => {
+  try {
+    const q = query(collection(db, 'users'), where('email', '==', email));
+    const querySnapshot = await getDocs(q);
+
+    if (querySnapshot.size > 0) {
+      const userDoc = querySnapshot.docs[0];
+      return userDoc.data().userName;
+    }
+
+    return null; // Usuário não encontrado
+  } catch (error) {
+    return null;
+  }
+};
 
 export const loginOn = (email, password) => {
-  console.log('Função loginOn foi chamada.');
   signInWithEmailAndPassword(auth, email, password)
     .then(async (userCredential) => {
       console.log('Login realizado com sucesso!', userCredential);
 
       const user = userCredential.user;
-      console.log('ID do usuário:', user.uid);
 
       const emailDoUsuario = user.email;
       if (emailDoUsuario) {
         const userName = await getUserNameFromDatabase(emailDoUsuario);
-        console.log('Nome do usuário obtido do banco de dados:', userName);
 
         const userData = {
           email: emailDoUsuario,
-          userName: userName,
+          userName,
         };
 
         currentUser = userData;
@@ -81,9 +99,6 @@ export const loginOn = (email, password) => {
       console.error('Falha ao logar usuário!', error);
     });
 };
-
-
-
 
 export const logoutAccount = () => {
   auth.signOut()
@@ -100,9 +115,9 @@ export const publishPost = async (publishData, book, userId, genre, age, content
       id: Date.now(),
       data: publishData,
       bookName: book,
-      userId: userId, // Save the user ID in Firestore
-      genre: genre,
-      age: age,
+      userId, // Save the user ID in Firestore
+      genre,
+      age,
       postContent: content,
       likes: 0,
     });
@@ -113,12 +128,16 @@ export const publishPost = async (publishData, book, userId, genre, age, content
 
 export const getPosts = async () => {
   try {
-    const q = query(collection(db, 'collectionPosts'), orderBy('data', 'desc'));
+    const q = query(
+      collection(db, 'collectionPosts'),
+      orderBy('data', 'desc'),
+    );
+
     const querySnapshot = await getDocs(q);
     const allPosts = [];
-    querySnapshot.forEach((doc) => {
-      const post = doc.data();
-      post.id = doc.id;
+    querySnapshot.forEach((documents) => {
+      const post = documents.data();
+      post.id = documents.id;
       allPosts.push(post);
     });
     return allPosts;
@@ -137,22 +156,4 @@ export const deletePosts = async (postId) => {
   }
 };
 
-export const getUserNameFromDatabase = async (email) => {
-  try {
-    const q = query(collection(db, 'users'), where('email', '==', email)); // Crie uma consulta para encontrar o usuário com o email correspondente
-    const querySnapshot = await getDocs(q); // Execute a consulta
-    if (querySnapshot.size > 0) {
-      const userDoc = querySnapshot.docs[0]; // Obtenha o primeiro documento com a correspondência de email
-      return userDoc.data().userName; // Retorne o campo userName do documento
-    } else {
-      return null; // Usuário não encontrado
-    }
-  } catch (error) {
-    console.error('Erro ao buscar o nome de usuário:', error);
-    return null;
-  }
-};
-
-export const getCurrentUser = () => {
-  return currentUser;
-};
+export const getCurrentUser = () => currentUser;

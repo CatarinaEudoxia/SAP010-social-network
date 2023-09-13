@@ -1,8 +1,7 @@
-import login from './pages/login/login.js';
-import register from './pages/cadastro/register.js';
-import home from './pages/home/home.js';
-import feed from './pages/feed/feed.js';
-// aqui exportaras las funciones que necesites
+import login from '/pages/login/login';
+import register from '/pages/cadastro/register';
+import home from '/pages/home/home';
+import feed from '/pages/feed/feed'; 
 
 const main = document.querySelector('#root');
 
@@ -32,5 +31,5 @@ const init = () => {
 window.addEventListener('load', () => {
   init();
   window.location.hash = '';
-  main.appendChild(login());
+  main.appendChild(home());
 });

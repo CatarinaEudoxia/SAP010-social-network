@@ -33,7 +33,6 @@ export default () => {
   const registerForm = containerRegister.querySelector('#register-form');
 
   function validarFormulario() {
-    const nameInput = document.querySelector('#your-name').value; // Captura o valor do campo de nome
     const passwordInput = document.querySelector('#password').value;
     const confirmPassword = document.querySelector('#confirm-password').value;
 

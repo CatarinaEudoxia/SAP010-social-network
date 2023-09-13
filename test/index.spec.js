@@ -1,4 +1,4 @@
-import { registerAccount, loginOn, logoutAccount } from '../src/lib/index';
+import { registerAccount, loginOn, logoutAccount } from '../index.js';
 
 describe('loginOn', () => {
   it('deve ser uma função', () => {
