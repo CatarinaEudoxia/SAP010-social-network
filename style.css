@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url(/pages/assets/background.png);
+    background-size: cover;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100%;
+
+}
+
+#container-body {
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#root {
+    margin-top: 20px;
+}
